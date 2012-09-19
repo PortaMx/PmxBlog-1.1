@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<id>portamx_corp:pmxblog</id>
+	<version>1.0</version>
+
+  <!-- index.php -->
+  <file name="$boarddir/index.php">
+    <operation>
+      <search position="before"><![CDATA[
+require_once($sourcedir . '/Security.php');
+]]></search>
+      <add><![CDATA[
+// --- start PmxBlog
+require_once($sourcedir . '/PmxBlog.php');
+// --- End PmxBlog
+]]></add>
+    </operation>
+
+    <operation>
+      <search position="before"><![CDATA[
+		// Track forum statistics and hits...?
+		if (!empty($modSettings['hitStats']))
+			trackStats(array('hits' => '+'));
+	}
+]]></search>
+      <add><![CDATA[
+// --- start PmxBlog
+	PmxBlog_init();
+// --- end PmxBlog
+]]></add>
+    </operation>
+
+    <operation>
+      <search position="before"><![CDATA[
+		'post' => array('Post.php', 'Post'),
+		'post2' => array('Post.php', 'Post2'),
+]]></search>
+      <add><![CDATA[
+// --- start PmxBlog
+		'pmxblog' => array('PmxBlog.php', 'PmxBlog'),
+// --- end PmxBlog
+]]></add>
+    </operation>
+  </file>
+
+  <!-- Subs.php -->
+  <file name="$sourcedir/Subs.php">
+    <operation>
+      <search position="after"><![CDATA[
+			'help' => array(
+				'title' => $txt['help'],
+]]></search>
+      <add><![CDATA[
+// --- start PmxBlog
+			'pmxblog' => array(
+				'title' => $txt['PmxBlog_blogbutton'],
+				'href' => $scripturl .'?action=pmxblog',
+				'show' => !empty($modSettings['pmxblog_enabled']) && AllowedToBlog('view', $user_info['id']),
+				'sub_buttons' => array(
+					'showall' => array(
+						'title' => $txt['PmxBlog_show_all_nav'],
+						'href' => $scripturl . '?action=pmxblog;sa=list',
+						'show' => !empty($modSettings['pmxblog_enabled']) && AllowedToBlog('view', $user_info['id']),
+					),
+					'showunread' => array(
+						'title' => $txt['PmxBlog_show_unread_nav'],
+						'href' => $scripturl . '?action=pmxblog;sa=unread',
+						'show' => !empty($modSettings['pmxblog_enabled']) && AllowedToBlog('view', $user_info['id']) && !$user_info['is_guest'],
+					),
+					'showtracked' => array(
+						'title' => $txt['PmxBlog_show_tracked_nav'],
+						'href' => $scripturl . '?action=pmxblog;sa=tracked',
+						'show' => !empty($modSettings['pmxblog_enabled']) && AllowedToBlog('view', $user_info['id']) && !$user_info['is_guest'],
+					),
+					'yourblogview' => array(
+						'title' => $txt['PmxBlog_your_blog_nav'],
+						'href' => $scripturl . '?action=pmxblog;sa=view',
+						'show' => !empty($modSettings['pmxblog_enabled']) && AllowedToBlog('manager', $user_info['id']) && !empty($context['PmxBlog']['blogexist']),
+					),
+					'yourblogsettings' => array(
+						'title' => $txt['PmxBlog_set_newblog_nav'],
+						'href' => $scripturl . '?action=pmxblog;sa=manager;set',
+						'show' => !empty($modSettings['pmxblog_enabled']) && AllowedToBlog('manager', $user_info['id']) && empty($context['PmxBlog']['blogexist']),
+					),
+					'blogadmin' => array(
+						'title' => $txt['PmxBlog_admin_nav'],
+						'href' => $scripturl . '?action=pmxblog;sa=admin',
+						'show' => !empty($modSettings['pmxblog_enabled']) && AllowedTo('admin_forum'),
+					),
+				),
+			),
+// --- end PmxBlog
+]]></add>
+    </operation>
+
+    <operation>
+      <search position="before"><![CDATA[
+	elseif ($context['current_action'] == 'register2')
+		$current_action = 'register';
+]]></search>
+      <add><![CDATA[
+// --- start PmxBlog
+	elseif ($context['current_action'] == 'pmxblog')
+		$current_action = 'pmxblog';
+// --- end PmxBlog
+]]></add>
+    </operation>
+	</file>
+
+  <!-- Profile.php -->
+  <file name="$sourcedir/Profile.php">
+    <operation>
+      <search position="after"><![CDATA[
+				'permissions' => array(
+					'label' => $txt['showPermissions'],
+					'file' => 'Profile-View.php',
+					'function' => 'showPermissions',
+]]></search>
+      <add><![CDATA[
+// --- start PmxBlog
+				'showblog' => array(
+					'label' => $txt['PmxBlog_show_blog'],
+					'custom_url' => $scripturl . '?action=pmxblog;sa=view;uid=' . $memID,
+					'enabled' => checkMemberBlog($memID) && (AllowedToBlog('view', $memID) || AllowedTo('admin_forum')),
+					'permission' => array(
+						'own' => 'profile_view_own',
+						'any' => 'profile_view_any',
+					),
+				),
+// --- end PmxBlog
+]]></add>
+    </operation>
+	</file>
+
+  <!-- ManageSettings.php -->
+  <file name="$sourcedir/ManageSettings.php">
+    <operation>
+      <search position="before"><![CDATA[
+			// Big Options... polls, sticky, bbc....
+			array('select', 'pollMode', array($txt['disable_polls'], $txt['enable_polls'], $txt['polls_as_topics'])),
+		'',
+]]></search>
+      <add><![CDATA[
+// PmxBlog enable/disable...
+			array('check', 'pmxblog_enabled'),
+		'',
+]]></add>
+    </operation>
+  </file>
+
+	<!-- Errors.php -->
+	<file name="$sourcedir/Errors.php">
+		<operation>
+			<search position="after"><![CDATA[
+	// Don't bother indexing errors mate...
+	$context['robot_no_index'] = true;
+
+	if (!isset($context['error_title']))
+		$context['error_title'] = $txt['error_occured'];
+	$context['error_message'] = isset($context['error_message']) ? $context['error_message'] : $error_message;
+]]></search>
+			<add><![CDATA[
+//--- Start PmxBlog
+	if(!defined('PMXBlog'))
+	{
+		global $sourcedir;
+		require_once($sourcedir .'/PmxBlog.php');
+		PmxBlog_init('Sec');
+	}
+//--- End PmxBlog
+]]></add>
+		</operation>
+	</file>
+
+	<!-- Security.php -->
+	<file name="$sourcedir/Security.php">
+		<operation>
+			<search position="after"><![CDATA[
+	// People always worry when they see people doing things they aren't actually doing...
+	$_GET['action'] = '';
+	$_GET['board'] = '';
+	$_GET['topic'] = '';
+	writeLog(true);
+]]></search>
+			<add><![CDATA[
+//--- Start PmxBlog
+	if(!defined('PMXBlog'))
+	{
+		global $sourcedir;
+		require_once($sourcedir . '/PmxBlog.php');
+		PmxBlog_init('Sec');
+	}
+//--- End PmxBlog
+]]></add>
+		</operation>
+	</file>
+
+  <!-- Add strings to Modifications.english.php -->
+  <file name="$themedir/languages/Modifications.english.php">
+    <operation>
+      <search position="after"><![CDATA[
+?>]]></search>
+      <add><![CDATA[
+$txt['pmxblog_enabled'] = 'Enable PortaMx Blog';
+]]></add>
+    </operation>
+  </file>
+
+  <!-- Add strings to Help.english.php -->
+  <file name="$themedir/languages/Help.english.php">
+    <operation>
+      <search position="after"><![CDATA[
+?>]]></search>
+      <add><![CDATA[
+$helptxt['pmxblog_enabled'] = 'Unchecking this box will disable PmxBlog. All data in the tables, as well as the programs and templates are not changed. You can activate PmxBlog any time again.';
+]]></add>
+    </operation>
+  </file>
+
+  <!-- Add strings to Modifications.german.php IF EXIST -->
+  <file name="$themedir/languages/Modifications.german.php" error="skip">
+    <operation>
+      <search position="after"><![CDATA[
+?>]]></search>
+      <add><![CDATA[
+$txt['pmxblog_enabled'] = 'Freigabe PortaMx Blog';
+]]></add>
+    </operation>
+  </file>
+
+  <!-- Add strings to Help.german.php IF EXIST -->
+  <file name="$themedir/languages/Help.german.php" error="skip">
+    <operation>
+      <search position="after"><![CDATA[
+?>]]></search>
+      <add><![CDATA[
+$helptxt['pmxblog_enabled'] = 'Beim abw&auml;hlen dieser Box wird PmxBlog inaktiv. Alle Daten in den Tabellen, sowie die Programme und Templates werden nicht ver&auml;ndert. Du kannst PmxBlog jederzeit wieder aktivieren.';
+?>]]></add>
+    </operation>
+  </file>
+
+  <!-- Add strings to Modifications.german-utf8.php IF EXIST -->
+  <file name="$themedir/languages/Modifications.german-utf8.php" error="skip">
+    <operation>
+      <search position="after"><![CDATA[
+?>]]></search>                                                                                                       >
+      <add><![CDATA[
+$txt['pmxblog_enabled'] = 'Freigabe PortaMx Blog';
+]]></add>
+    </operation>
+  </file>
+
+  <!-- Add strings to Help.german-utf8.php IF EXIST -->
+  <file name="$themedir/languages/Help.german-utf8.php" error="skip">
+    <operation>
+      <search position="after"><![CDATA[
+?>]]></search>
+      <add><![CDATA[
+$helptxt['pmxblog_enabled'] = 'Beim abwählen dieser Box wird PmxBlog inaktiv. Alle Daten in den Tabellen, sowie die Programme und Templates werden nicht verändert. Du kannst PmxBlog jederzeit wieder aktivieren.';
+?>]]></add>
+    </operation>
+  </file>
+
+</modification>

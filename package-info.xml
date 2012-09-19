@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+
+	<name>PMXBlog</name>
+	<id>portamx_corp:pmxblog</id>
+	<type>modification</type>
+	<version>1.1</version>
+
+	<install for="2.0*">
+		<readme type="file" parsebbc="true">install/readme.bbc</readme>
+		<database>install/dbinstall.php</database>
+		<modification format="xml" type="file">install/pmxblog_inst.xml</modification>
+		<require-dir name="Themes" destination="$boarddir" />
+		<require-dir name="Sources" destination="$boarddir" />
+		<require-dir name="editor_thumbnails" destination="$boarddir" />
+		<require-file name="PmxBlogSSI.php" destination="$boarddir" />
+		<require-file name="PmxBlogSSI_example.php" destination="$boarddir" />
+		<require-file name="PmxBlogSSI_example.shtml" destination="$boarddir" />
+		<redirect url="$scripturl?action=pmxblog;sa=admin" timeout="60000">install/installdone.html</redirect>
+	</install>
+
+	<uninstall for="2.0*">
+		<readme type="file" parsebbc="true">install/remove.bbc</readme>
+		<modification format="xml" type="file" reverse="true">install/pmxblog_inst.xml</modification>
+		<remove-file name="$boarddir/PmxBlogSSI.php" />
+		<remove-file name="$boarddir/PmxBlogSSI_example.php" />
+		<remove-file name="$boarddir/PmxBlogSSI_example.shtml" />
+		<remove-file name="$sourcedir/PmxBlog.php" />
+		<remove-file name="$sourcedir/PmxBlogManager.php" />
+		<remove-file name="$sourcedir/PmxBlogAdmin.php" />
+		<remove-file name="$sourcedir/PmxBlogCaptcha.php" />
+		<remove-file name="$sourcedir/PmxBlogSettings.php" />
+		<remove-file name="$sourcedir/PmxBlogPortaMx.php" />
+		<remove-file name="$themedir/languages/PmxBlog.german-utf8.php" />
+		<remove-file name="$themedir/languages/PmxBlog.german.php" />
+		<remove-file name="$themedir/languages/PmxBlog.english.php" />
+		<remove-file name="$themedir/languages/PmxBlogNotify.english.php" />
+		<remove-file name="$themedir/languages/PmxBlogNotify.german.php" />
+		<remove-file name="$themedir/languages/PmxBlogNotify.german-utf8.php" />
+		<remove-file name="$themedir/PmxBlog.template.php" />
+		<remove-file name="$themedir/PmxBlogHeader.php" />
+		<remove-file name="$themedir/PmxBlogMenu.php" />
+		<remove-file name="$themedir/PmxBlogAdmin.template.php" />
+		<remove-file name="$themedir/PmxBlogSettings.template.php" />
+		<remove-file name="$themedir/PmxBlogSettings.javascript.inc" />
+		<remove-file name="$themedir/PmxBlog.css" />
+		<remove-file name="$themedir/core/pmxblog_core.css" />
+		<remove-file name="$themedir/core/pmxblog_menu.png" />
+		<redirect url="$scripturl" timeout="60000">install/removedone.html</redirect>
+	</uninstall>
+</package-info>

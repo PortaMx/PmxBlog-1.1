@@ -1,0 +1,141 @@
+/*
+ PmxBlog.css
+ Version: 1.0 for SMF 2.0
+ Copyright 2011 by: PortaMx corp.
+ Support and Updates at: http://portamx.com
+*/
+
+/* Grid table changes */
+.pmxblog_th thead th
+{
+	height: 28px !important;
+}
+.pmxblog_empty
+{
+	padding: 0 !important;
+	margin: 0 !important;
+	border-width: 0 !important;
+	empty-cells: hide !important;
+}
+/* border and frames */
+.pmxblog_border
+{
+	padding: 0 !important;
+	margin: 0 !important;
+	background: transparent;
+}
+.pmxblog_cmnt
+{
+	border-top-width: 0;
+	padding: 0 !important;
+	margin: 0 !important;
+	background: transparent;
+}
+.pmxblog_rule
+{
+	border-width: 0;
+	border-bottom-width: 1px;
+	padding: 1px 0 !important;
+	margin: 0 4px 4px 4px !important;
+	background: transparent;
+	line-height: 1px !important;
+	clear: both;
+}
+/* page index */
+.pmxblog_pageidx
+{
+	padding: 0 6px !important;
+	font-size: 12px !important;
+	font-weight: normal;
+	line-height: 19px;
+	height: 19px;
+}
+.pmxblog_pageidx.upper
+{
+	margin: 0 0 2px 0 !important;
+}
+.pmxblog_pageidx.lower
+{
+	margin: 8px 0 2px 0 !important;
+}
+.pmxblog_pageidx.upperover
+{
+	margin: 4px 0 4px 0 !important;
+}
+.pmxblog_pageidx.lowerover
+{
+	margin: 6px 0 2px 0 !important;
+}
+
+.pmxblog_pageidx img
+{
+	margin-top:3px;
+}
+.pmxblog_pagenum
+{
+	float: left;
+	white-space: nowrap;
+}
+.pmxblog_pagetop
+{
+	float: right;
+	padding-right:15px;
+}
+.pmxblog_pagebot
+{
+	float: right;
+}
+/* Blog buttons */
+.blogbutton
+{
+	border-left-width: 0;
+	border-right-width: 0;
+	padding: 0 3px;
+	font-size: 9pt !important;
+	font-weight: bold;
+	cursor: pointer;
+}
+a.blogbutton:link, a.blogbutton:visited
+{
+	text-decoration: none;
+}
+a.blogbutton:hover
+{
+	text-decoration: none;
+}
+.funclaunch
+{
+	padding: 0;
+	margin: 0;
+	background: transparent;
+	border-right-width: 5px;
+	border-left-width: 0;
+	margin-left: 10px;
+}
+.funcexit, .funcexit2
+{
+	padding: 0;
+	margin: 0 0 0 10px;
+	background: transparent;
+	border-left-width: 5px;
+	border-right-width: 0;
+	margin-right: 0px;
+	text-align: left;
+}
+.funcexit2
+{
+	margin: 0;
+}
+.pmxborderbot
+{
+	background: transparent;
+	border-width: 0 0 1px 0;
+}
+.pmxblog_headpad
+{
+	height:6px;
+}
+.pmxblog_sortpad
+{
+	padding:0 4px 2px 4px;
+}
