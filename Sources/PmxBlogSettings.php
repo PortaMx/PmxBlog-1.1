@@ -2,9 +2,9 @@
 // ----------------------------------------------------------
 // -- PmxBlogSettings.php                                  --
 // ----------------------------------------------------------
-// -- Version: 1.0 for SMF 2.0                             --
+// -- Version: 1.1 for SMF 2.0                             --
 // -- Copyright 2006..2008 by: "Feline"                    --
-// -- Copyright 2009-2011 by: PortaMx corp.                --
+// -- Copyright 2009-2012 by: PortaMx corp.                --
 // -- Support and Updates at: http://portamx.com           --
 // ----------------------------------------------------------
 
