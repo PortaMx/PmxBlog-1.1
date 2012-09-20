@@ -55,7 +55,7 @@ function template_main()
 		{
 			if(isset($context['PmxBlog']['pageindex']))
 				echo '
-				<div class="catbg pmxblog_pageidx upperover">
+				<div class="pmxblog_pageidx upperover">
 					<div class="pmxblog_pagenum">'. $context['PmxBlog']['pageindex'] .'</div>
 					<div class="pmxblog_pagebot">'. $context['PmxBlog']['pagebot'] .'</div>
 				</div>';
@@ -78,13 +78,13 @@ function template_main()
 			if(isset($context['PmxBlog']['pageindex']))
 				echo '
 				<a name="bot"></a>
-				<div class="catbg pmxblog_pageidx lowerover">
+				<div class="pmxblog_pageidx lowerover">
 					<div class="pmxblog_pagenum">'. $context['PmxBlog']['pageindex'] .'</div>
 					<div class="pmxblog_pagebot">'. $context['PmxBlog']['pagetop'] .'</div>
 				</div>';
 
 			echo '
-				<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>';
+				<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>';
 		}
 		else
 			echo '
@@ -228,7 +228,7 @@ function template_main()
 			</div>
 			</div>
 			</form>
-			<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</td>';
 
 			Pmx_SideBar();
@@ -371,7 +371,7 @@ function template_main()
 			</div>
 			</div>
 			</form>
-			<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</td>';
 
 			Pmx_SideBar();
@@ -488,7 +488,7 @@ function template_main()
 					</td></tr></table>
 				</div>
 				</div>
-				<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+				<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</td>';
 
 			Pmx_SideBar();
@@ -579,14 +579,13 @@ function template_main()
 				<div style="padding:2px 5px;">'. $cmt['body'] .'</div>
 			</div>
 			</div>
-			<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</td>';
 
 			Pmx_SideBar();
 			}
 		break;
 
-//		$context['PmxBlog']['action'][0] = 'editcmnt';
 		// Edit Comment
 		case "cmntedit":
 			foreach($context['PmxBlog']['comments'] as $cmt);
@@ -658,7 +657,7 @@ function template_main()
 				<div style="padding:2px 5px;">'. $cmt['body'] .'</div>
 			</div>
 			</div>
-			<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</td>';
 
 			Pmx_SideBar();
@@ -670,7 +669,7 @@ function template_main()
 			{
 				if($context['PmxBlog']['action'][0] != 'singlepage' && isset($context['PmxBlog']['pageindex']))
 					echo '
-					<div class="catbg pmxblog_pageidx upper">
+					<div class="pmxblog_pageidx upper">
 						<div class="pmxblog_pagenum">'. $context['PmxBlog']['pageindex'] .'</div>
 						<div class="pmxblog_pagebot">'. $context['PmxBlog']['pagebot'] .'</div>
 					</div>';
@@ -717,8 +716,8 @@ function template_main()
 							(!empty($context['PmxBlog']['contprev']) || !empty($context['PmxBlog']['contnext'])
 							? '
 						<div class="plainbox pmxblog_border">
-							<div class="windowbg2" style="height:20px;">
-								<div style="float:left;padding:2px 5px; font-weight:bold;">'.
+							<div class="windowbg" style="height:24px;">
+								<div style="float:left;padding:3px 5px; font-weight:bold;">'.
 									(!empty($context['PmxBlog']['contprev'])
 									?	'<a href="'. $scripturl .'?action=pmxblog;sa='. $context['PmxBlog']['mode'] .';cont='. $context['PmxBlog']['contprev']['contid'] . $context['PmxBlog']['UserLink']. '#top">&laquo;&laquo; '. $context['PmxBlog']['contprev']['subject'] .'</a>'
 									:	''
@@ -792,10 +791,6 @@ function template_main()
 							($blog['nbr_comment'] > 0
 							?	'<a href="'. $scripturl .'?action=pmxblog;sa='. $context['PmxBlog']['mode'] .';cont='.$blog['id'].$context['PmxBlog']['UserLink'].($blog['is_new_cmnt'] ? '#new' : '#cmnt').'">'. $txt['PmxBlog_comments'].$blog['nbr_comment'] .($blog['is_new_cmnt'] ? $context['PmxBlog']['newCmnt'] : '').'</a>'
 							:	$txt['PmxBlog_comments'].$blog['nbr_comment']
-							).
-							($context['PmxBlog']['mode'] != 'manager'
-								?	$txt['PmxBlog_cmnt_allow_to'].$txt['PmxBlog_allow'][$blog['allowcomment'][0]].')'
-								:	''
 							);
 
 							if($context['PmxBlog']['mode'] == 'manager' && ($user_info['id'] == $blog['userid']))
@@ -929,13 +924,13 @@ function template_main()
 				if(isset($context['PmxBlog']['pageindex']))
 				echo '
 					<a name="bot"></a>
-					<div class="catbg pmxblog_pageidx lower">
+					<div class="pmxblog_pageidx lower">
 						<div class="pmxblog_pagenum">'. $context['PmxBlog']['pageindex'] .'</div>
 						<div class="pmxblog_pagebot">'. $context['PmxBlog']['pagetop'] .'</div>
 					</div>';
 
 				echo '
-					<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+					<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 				</td>';
 
 				Pmx_SideBar();
@@ -950,20 +945,22 @@ function template_main()
 
 					if(isset($context['PmxBlog']['pageindex']))
 						echo '
-					<div class="catbg pmxblog_pageidx upper">
+					<div class="pmxblog_pageidx uppercmt">
 						<div class="pmxblog_pagenum">'. $context['PmxBlog']['pageindex'] .'</div>
 						<div class="pmxblog_pagebot">'. $context['PmxBlog']['pagebot'] .'</div>
 						<div class="pmxblog_pagetop">'. $context['PmxBlog']['pagetop'] .'</div>
-					</div>';
+					</div>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">';
 
+				else
 					echo '
-					<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:4px;">';
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:12px;">';
 
 					$pc = 0;
 					$blog = $context['PmxBlog']['content'][0];
 					foreach($context['PmxBlog']['comments'] as $cmt)
 					{
-						$ml = $cmt['treelevel'] * 15;
+						$ml = ($cmt['treelevel'] -1) * 15;
 						if($pc >= $context['PmxBlog']['startpage'] && $pc < $context['PmxBlog']['startpage'] + $context['PmxBlog']['comment_pages'])
 						{
 							echo '
@@ -1021,14 +1018,14 @@ function template_main()
 
 					if(isset($context['PmxBlog']['pageindex']))
 						echo '
-					<div class="catbg pmxblog_pageidx lower">
+					<div class="pmxblog_pageidx lower">
 						<div class="pmxblog_pagenum">'. $context['PmxBlog']['pageindex'] .'</div>
 						<div class="pmxblog_pagebot">'. $context['PmxBlog']['cmntpagetop'] .'</div>
 						<div class="pmxblog_pagetop">'. $context['PmxBlog']['pagetop'] .'</div>
 					</div>';
 				}
 				echo '
-					<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+					<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 				</td>';
 
 				Pmx_SideBar();
@@ -1114,6 +1111,6 @@ function template_PmxBlog_error($errtitle = '', $errmsg = '')
 			<span class="botslice"><span></span></span>
 		</div>
 	</div>
-	<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>';
+	<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>';
 }
 ?>

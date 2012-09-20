@@ -162,7 +162,7 @@ function template_main()
 			</table>
 			<span class="botslice"><span></span></span>
 			</div>
-			<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</form>';
 		}
 
@@ -329,7 +329,7 @@ function template_main()
 			</div>
 			<span class="botslice"><span></span></span>
 			</div>
-			<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			'.
 			(isOwner() && !isBlogLocked() ? '
 			<script type="text/javascript">
@@ -356,7 +356,7 @@ function template_main()
 					</div>
 				<span class="botslice"><span></span></span>
 				</div>
-				<div class="smalltext" style="text-align:center; margin: 0 auto;">'.$context['PmxBlog']['copyright'].'</div>
+				<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</form>';
 		}
 	}

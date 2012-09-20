@@ -16,10 +16,10 @@ function template_main()
 	Navigation($context['PmxBlog']['nav_tabs']);
 
 	$curact = AdminTabs($context['PmxBlog']['admin_tabs']);
-	if($curact == 'set')
+	if($curact == 'setup')
 	{
 		echo '
-		<form id="pmx_form" accept-charset="'.$context['character_set'].'" name="PmxBlog_Setting" action="' . $scripturl . '?action=pmxblog;sa=admin;set=upd" method="post" style="margin: 0px;">
+		<form id="pmx_form" accept-charset="'.$context['character_set'].'" name="PmxBlog_Setting" action="' . $scripturl . '?action=pmxblog;sa=admin;setup=upd" method="post" style="margin: 0px;">
 		<div class="windowbg2 pmxblog_core" style="margin-top:4px;">
 		<span class="topslice"><span></span></span>
 			<table width="100%" border="0" class="windowbg2" style="padding:3px 5px;">

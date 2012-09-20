@@ -173,7 +173,7 @@ function PmxBlog_Admin()
 	$context['PmxBlog']['admin_tabs'] = array(
 		'title' => $txt['PmxBlog_settings_title'],
 		'tabs' => array(
-			'set' => array(
+			'setup' => array(
 				'title' => $txt['PmxBlog_setcom_title'],
 				'href' => $scripturl . '?action=pmxblog;sa=admin;setup'.$context['PmxBlog']['UserLink'],
 				'is_selected' => $curact == 'setup',
