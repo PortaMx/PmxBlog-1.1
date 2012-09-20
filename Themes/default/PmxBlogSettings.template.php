@@ -54,9 +54,9 @@ function template_main()
 			(isOwner() ? '
 			<input name="contenteditor" type="hidden" value="1" />
 			<input name="commenteditor" type="hidden" value="1" />' : '') .'
-			<div class="windowbg pmxblog_core pmx_roundcore">
+			<div class="windowbg2 pmxblog_core pmx_roundcore">
 			<span class="topslice"><span></span></span>
-			<table class="windowbg" cellspacing="0" width="100%" style="table-layout:fixed;">
+			<table class="windowbg2" cellspacing="0" width="100%" style="table-layout:fixed;">
 				<tr>
 					<td align="right" width="45%" style="padding-bottom: 5px;">'. $txt['PmxBlog_blogname'] .'</td>
 					<td width="55%" style="padding-bottom: 5px;">
@@ -210,7 +210,7 @@ function template_main()
 				// ]]></script>';
 			}
 			echo '
-			<div class="title_bar"><h3 class="titlebg" style="margin:2px 0;">
+			<div class="title_bar"><h3 class="titlebg">
 				<div class="smalltext" style="float:left; width:205px;">'. $txt['PmxBlog_short_action'] .'</div>
 				<div class="smalltext" style="float:left;">'. $txt['PmxBlog_categorie_title'] .'</div>
 				'.(isOwner() && !isBlogLocked()
@@ -220,9 +220,9 @@ function template_main()
 				: '') .'
 			</h3></div>
 
-			<div class="windowbg pmxblog_core pmx_roundcore">
+			<div class="windowbg2 pmxblog_core pmx_roundcore">
 			<span class="topslice"><span></span></span>
-			<table class="windowbg" cellspacing="0" width="100%" style="table-layout:fixed;">
+			<table class="windowbg2" cellspacing="0" width="100%" style="table-layout:fixed;">
 			<tbody id="categorie_edit">';
 			if(isOwner() && !isBlogLocked())
 				echo '
@@ -344,11 +344,11 @@ function template_main()
 		elseif($curact == 'removeblog')
 		{
 			echo '
-			<div class="title_bar"><h3 class="titlebg" style="margin:2px 0; text-align:center;">
+			<div class="title_bar"><h3 class="titlebg" text-align:center;">
 				'. $txt['PmxBlog_remove_title'] .'
 			</h3></div>
 			<form id="pmx_form" name="PmxBlogManager_BlogDelete" action="' . $scripturl . '?action=pmxblog;sa=manager;setup=remove'.$context['PmxBlog']['UserLink'].'" method="post" style="margin: 0px;">
-				<div class="windowbg pmxblog_core pmx_roundcore">
+				<div class="windowbg2 pmxblog_core pmx_roundcore">
 				<span class="topslice"><span></span></span>
 					<div style="padding:5px 5px;text-align:center;">
 					'. $txt['PmxBlog_blog_remove'] .'<br /><br />

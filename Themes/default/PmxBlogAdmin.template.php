@@ -20,9 +20,9 @@ function template_main()
 	{
 		echo '
 		<form id="pmx_form" accept-charset="'.$context['character_set'].'" name="PmxBlog_Setting" action="' . $scripturl . '?action=pmxblog;sa=admin;set=upd" method="post" style="margin: 0px;">
-		<div class="windowbg pmxblog_core" style="margin-top:4px;">
+		<div class="windowbg2 pmxblog_core" style="margin-top:4px;">
 		<span class="topslice"><span></span></span>
-			<table width="100%" border="0" class="windowbg" style="padding:3px 5px;">
+			<table width="100%" border="0" class="windowbg2" style="padding:3px 5px;">
 				<tr style="margin-top:10px;"><td valign="top" align="right" style="width:45%; padding-top:10px;">
 					'. $txt['PmxBlog_usewysiwyg'] .'
 				</td><td valign="top" style="padding-top:10px;">
@@ -165,9 +165,9 @@ function template_main()
 	{
 		echo '
 		<form id="pmx_form" accept-charset="'.$context['character_set'].'" name="PmxBlog_Setting" action="' . $scripturl . '?action=pmxblog;sa=admin;acs=upd" method="post" style="margin: 0px;">
-		<div class="windowbg pmxblog_core" style="margin-top:4px;">
+		<div class="windowbg2 pmxblog_core" style="margin-top:4px;">
 		<span class="topslice"><span></span></span>
-			<table width="100%" border="0" class="windowbg" style="padding:3px 5px;">
+			<table width="100%" border="0" class="windowbg2" style="padding:3px 5px;">
 				<tr><td style="width:33%;">
 					'.$txt['PmxBlog_blog_manage'].'
 				</td><td style="width:33%;">

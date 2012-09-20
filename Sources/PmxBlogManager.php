@@ -22,7 +22,7 @@ function PmxBlogManager($mode, $pagelist)
 
 	$uid = $context['PmxBlog']['UID'];
 	if($mode == 'manager' && !isOwner($uid))
-	{	
+	{
 		if(isset($_GET['setup']) && !AllowedTo('admin_forum'))
 			NotAllowed();
 	}
@@ -137,7 +137,7 @@ function PmxBlogManager($mode, $pagelist)
 			else
 				$id = $_GET['qchg'];
 			unset($_GET['qchg']);
-			
+
 			$published = 0;
 			foreach ($_POST as $what => $value)
 			{
@@ -152,7 +152,7 @@ function PmxBlogManager($mode, $pagelist)
 						array('colkey' => $what, 'colval' => $value, 'contid' => $id)
 					);
 			}
-  
+
 			// if published, notify all user where track this blog
 			if(!empty($published))
 			{
@@ -310,7 +310,7 @@ function PmxBlogManager($mode, $pagelist)
 			}
 
 			// save content
-			elseif($id == 'save')
+			elseif($id == 'store')
 			{
 				if(!isOwner())
 					NotAllowed();
@@ -923,7 +923,7 @@ function PmxBlogManager($mode, $pagelist)
 			}
 
 			// save comment or replay
-			elseif(isset($_GET['save']))
+			elseif(isset($_GET['store']))
 			{
 				if($user_info['is_guest'])
 				{
@@ -934,8 +934,8 @@ function PmxBlogManager($mode, $pagelist)
 							$rdir = $scripturl. '?'. $_SESSION['PmxBlog_captcha']['request'][0];
 						else
 						{
-							$_GET[$_GET['save']] = '';
-							unset($_GET['save']);
+							$_GET[$_GET['store']] = '';
+							unset($_GET['store']);
 							$rdir = $scripturl .'?'. http_build_query($_GET, '', ';');
 						}
 						if(function_exists('create_sef_url'))
@@ -982,7 +982,7 @@ function PmxBlogManager($mode, $pagelist)
 				$treeS2 = 0;
 				$parent = 0;
 
-				if($_GET['save'] == 'new')
+				if($_GET['store'] == 'new')
 				{
 					$request = $smcFunc['db_query']('', '
 						SELECT MAX(treeS2) as treeS2
@@ -1001,7 +1001,7 @@ function PmxBlogManager($mode, $pagelist)
 					$ptrS2 = '';
 				}
 
-				elseif($_GET['save'] == 'rply')
+				elseif($_GET['store'] == 'rply')
 				{
 					$request = $smcFunc['db_query']('', '
 						SELECT contID, parent, treelevel, treeS2
@@ -1377,7 +1377,7 @@ function PmxBlogManager($mode, $pagelist)
 				array(
 					'idmem' => $user_info['id'],
 					's_idmem' => (string) $user_info['id'],
-					'uid' => $uid, 
+					'uid' => $uid,
 					'catid' => $cID,
 					'refmin' => $context['PmxBlog']['Manager']['refmin'],
 					'refmax' => $context['PmxBlog']['Manager']['refmax']

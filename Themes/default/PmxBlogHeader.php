@@ -287,7 +287,7 @@ function Pmx_SideBar()
 					<tr><td colspan="2" class="pmxblog_empty"></td></tr></table>
 
 					<div class="plainbox pmxblog_border">
-					<table class="windowbg" width="100%" align="center" border="0" cellspacing="4" cellpadding="0">
+					<table class="windowbg2" width="100%" align="center" border="0" cellspacing="4" cellpadding="0">
 						<tr>';
 
 			foreach($calData['week_days'] as $day)
@@ -397,7 +397,7 @@ function Pmx_SideBar()
 					</thead>
 				<tr><td colspan="2" class="pmxblog_empty"></td></tr></table>
 				<div class="plainbox pmxblog_border">
-				<div class="windowbg" style="padding:5px 5px;">
+				<div class="windowbg2" style="padding:5px 5px;">
 					<span class="smalltext">';
 
 			for ($m=1; $m <= 12; $m++)
@@ -438,7 +438,7 @@ function Pmx_SideBar()
 			{
 				echo '
 				<div class="plainbox pmxblog_border">
-					<div class="windowbg" style="padding:5px 5px;">';
+					<div class="windowbg2" style="padding:5px 5px;">';
 				foreach($context['PmxBlog']['categorie'] as $fbcat)
 				{
 					$d = str_pad('', $fbcat['depth']*2, '.');

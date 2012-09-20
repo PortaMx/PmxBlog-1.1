@@ -21,7 +21,7 @@
 .pmxblog_border
 {
 	padding: 0 !important;
-	margin: 0 !important;
+	margin: -1px 0 0 0 !important;
 	background: transparent;
 }
 .pmxblog_cmnt

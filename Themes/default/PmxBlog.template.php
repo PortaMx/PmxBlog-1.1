@@ -383,7 +383,7 @@ function template_main()
 			{
 			foreach($context['PmxBlog']['content'] as $blog);
 			echo '
-			<form id="pmx_form" name="PmxManager_newblog" action="' .$scripturl. '?action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$blog['id'].';save=new'.$context['PmxBlog']['UserLink'].';'. SID .'" enctype="multipart/form-data" method="post" style="padding:0px; margin:0px">
+			<form id="pmx_form" name="PmxManager_newblog" action="' .$scripturl. '?action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$blog['id'].';store=new'.$context['PmxBlog']['UserLink'].';'. SID .'" enctype="multipart/form-data" method="post" style="padding:0px; margin:0px">
 			<table class="table_grid pmxblog_th" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-width:0;">
 				<thead>
 					<tr class="catbg">
@@ -438,7 +438,7 @@ function template_main()
 				// ]]></script>';
 
 				if($user_info['is_guest'])
-					captcha_template('action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$blog['id'].';save=new'.$context['PmxBlog']['UserLink']);
+					captcha_template('action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$blog['id'].';store=new'.$context['PmxBlog']['UserLink']);
 
 				echo '
 				<div align="center" style="vertical-align:middle; padding:3px 5px; margin-top:5px;">
@@ -461,7 +461,7 @@ function template_main()
 			</table>
 
 				<div class="plainbox pmxblog_border">
-				<div class="windowbg">
+				<div class="windowbg2">
 					<div class="smalltext" style="padding:0px 5px;">
 						<div style="float:left;clear:right;">'. $txt['PmxBlog_selcat'] . GetCatname($blog['categorie']) .'</div>
 						<div style="float:right;">'. $txt['PmxBlog_allow_to'] . $txt['PmxBlog_allow'][$blog['allow']] .'</div>
@@ -501,7 +501,7 @@ function template_main()
 			{
 			foreach($context['PmxBlog']['comments'] as $cmt);
 			echo '
-			<form id="pmx_form" name="PmxManager_newblog" action="' .$scripturl. '?action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$cmt['id'].';save=rply'. $context['PmxBlog']['UserLink'] .'" enctype="multipart/form-data" method="post" style="padding:0px; margin:0px">
+			<form id="pmx_form" name="PmxManager_newblog" action="' .$scripturl. '?action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$cmt['id'].';store=rply'. $context['PmxBlog']['UserLink'] .'" enctype="multipart/form-data" method="post" style="padding:0px; margin:0px">
 			<table class="table_grid pmxblog_th" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-width:0;">
 				<thead>
 					<tr class="catbg">
@@ -556,7 +556,7 @@ function template_main()
 				// ]]></script>';
 
 				if($user_info['is_guest'])
-					captcha_template('action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$cmt['id'].';save=rply'. $context['PmxBlog']['UserLink']);
+					captcha_template('action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$cmt['id'].';store=rply'. $context['PmxBlog']['UserLink']);
 
 				echo '
 				<br />
@@ -572,7 +572,7 @@ function template_main()
 				Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), '<span style="font-weight:normal;">'. $cmt['treeS2'] .' - </span>'.$cmt['subject']) .'
 			</div>
 			<div class="plainbox pmxblog_cmnt">
-			<div class="windowbg" style="padding:2px 5px;">
+			<div class="windowbg2" style="padding:2px 5px;">
 				<div class="smalltext" style="padding:2px 5px;">
 				'. $txt['PmxBlog_by'] . '<a href="'.$scripturl.'?action=profile;u='.$cmt['userid'].'"><b>'. $cmt['realname'] .'</b></a> '. $txt['PmxBlog_on'] . $cmt['date_created'], ($cmt['date_edit'] != 0 && $cmt['is_edit']) ? $txt['PmxBlog_lastedit'] . $cmt['date_edit'] : '', '<br />
 				</div>
@@ -651,7 +651,7 @@ function template_main()
 				Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), '<span style="font-weight:normal;">'. $cmt['treeS2'] .' - </span>'.$cmt['subject']) .'
 			</div>
 			<div class="plainbox pmxblog_cmnt">
-			<div class="windowbg" style="padding:2px 5px;">
+			<div class="windowbg2" style="padding:2px 5px;">
 				<div class="smalltext" style="padding:2px 5px;">
 				'. $txt['PmxBlog_by'] . '<a href="'.$scripturl.'?action=profile;u='.$cmt['userid'].'"><b>'. $cmt['realname'] .'</b></a> '. $txt['PmxBlog_on'] . $cmt['date_created'], ($cmt['date_edit'] != 0 && $cmt['is_edit']) ? $txt['PmxBlog_lastedit'] . $cmt['date_edit'] : '', '<br />
 				</div>
@@ -734,7 +734,7 @@ function template_main()
 						</div>' : '')
 						:	'') .'
 						<div class="plainbox pmxblog_border">
-						<div class="windowbg" style="padding:2px 0px; clear:both;">';
+						<div class="windowbg2" style="padding:2px 0px; clear:both;">';
 
 						if($context['PmxBlog']['mode'] == 'manager' && ($user_info['id'] == $blog['userid']))
 						{
@@ -893,7 +893,7 @@ function template_main()
 									).'
 									</div>'
 								:	'<div style="float:left;clear:right;'.(!$blog['singlepage'] ? 'padding-top:4px;' : '').'">'.
-									($blog['allowcomment'][1]
+									($blog['allowcomment'][1] && (($user_info['is_guest'] && in_array(-1, $context['PmxBlog']['blog_wr_acs'])) || !$user_info['is_guest'])
 									?	(isBlogEnabled()
 										?	'<a href="'. $scripturl .'?action=pmxblog;sa='. $context['PmxBlog']['mode'] .';cmnt='. $blog['id'] .';new'.$context['PmxBlog']['UserLink'].'">'. $txt['PmxBlog_writecomment'] .'</a>'
 										:	$txt['PmxBlog_writecomment'].'<span style="vertical-align:super;">'.$txt['PmxBlog_no_comment'][1].'</span>'
@@ -972,7 +972,7 @@ function template_main()
 									<a name="cmnt'.$cmt['id'].'"></a>'.
 									($cmt['is_new_cmnt'] ? '<a name="new"></a>' : '').'
 									<div class="plainbox pmxblog_cmnt">
-										<div class="windowbg">
+										<div class="windowbg2">
 											<div class="titlebg pmxblog_corecmnt" style="padding:2px 5px;">'.
 												Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), '<span style="font-weight:normal;">'. $cmt['treeS2'] .' - </span>'.$cmt['subject']) .'
 											</div>
@@ -991,7 +991,7 @@ function template_main()
 
 											<div style="padding:4px 2px 0px;">
 												<div class="smalltext" style="float:left;clear:right;">'.
-													($blog['allowcomment'][1]
+													($blog['allowcomment'][1] && (($user_info['is_guest'] && in_array(-1, $context['PmxBlog']['blog_wr_acs'])) || !$user_info['is_guest'])
 													?	(isBlogEnabled()
 														?	'<a href="'. $scripturl .'?action=pmxblog;sa='. $context['PmxBlog']['mode'] .';cmnt='. $cmt['id'] .';rply'.$context['PmxBlog']['UserLink'].'">'. $txt['PmxBlog_write_reply'] .'</a>'
 														:	$txt['PmxBlog_write_reply'].'<span style="vertical-align:super;">'.$txt['PmxBlog_no_comment'][1].'</span>'
@@ -1099,7 +1099,7 @@ function template_PmxBlog_error($errtitle = '', $errmsg = '')
 			<span class="left"><span></span></span>
 			'.(empty($errtitle) ? $context['PmxBlog_Error']['Title'] : $errtitle) .'
 		</h3>
-		<div class="windowbg">
+		<div class="windowbg2">
 			<span class="topslice"><span></span></span>
 			<div style="padding: 1ex;">'. (empty($errmsg) ? $context['PmxBlog_Error']['Msg'] : $errmsg) .'</div>
 			<div align="center" style="margin-top: 1ex;">';
