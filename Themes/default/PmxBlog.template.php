@@ -126,7 +126,7 @@ function template_main()
 			if(isBlogEnabled())
 			{
 				echo '
-				<form id="pmx_form" name="PmxManager_newblog" action="' .$scripturl. '?action=pmxblog;sa=manager;cont=save'.$context['PmxBlog']['UserLink'].'" enctype="multipart/form-data" method="post" style="padding:0px; margin:0px">
+				<form id="pmx_form" name="PmxManager_newblog" action="' .$scripturl. '?action=pmxblog;sa=manager;cont=store'.$context['PmxBlog']['UserLink'].'" enctype="multipart/form-data" method="post" style="padding:0px; margin:0px">
 				<table class="table_grid pmxblog_th" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-width:0;">
 					<thead>
 						<tr class="catbg">

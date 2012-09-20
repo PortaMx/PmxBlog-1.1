@@ -65,8 +65,8 @@ $tabledate = array(
 		// column defs
 		array(
 			array('name' => 'ID', 'type' => 'int', 'null' => false, 'auto' => true),
-			array('name' => 'name', 'type' => 'varchar', 'size' => '25', 'null' => false),
-			array('name' => 'value', 'type' => 'text', 'null' => false),
+			array('name' => 'name', 'type' => 'varchar', 'size' => '25', 'default' => ''),
+			array('name' => 'value', 'type' => 'text', 'default' => ''),
 		),
 		// index defs
 		array(
@@ -80,20 +80,20 @@ $tabledate = array(
 		// column defs
 		array(
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'blogname', 'type' => 'tinytext', 'null' => false),
-			array('name' => 'blogdesc', 'type' => 'tinytext', 'null' => false),
-			array('name' => 'showarchive', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
-			array('name' => 'showcategories', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
-			array('name' => 'showcalendar', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
+			array('name' => 'blogname', 'type' => 'tinytext', 'default' => ''),
+			array('name' => 'blogdesc', 'type' => 'tinytext', 'default' => ''),
+			array('name' => 'showarchive', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'showcategories', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'showcalendar', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'blogcreated', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'hidebaronedit', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'blogenabled', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
-			array('name' => 'bloglocked', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
-			array('name' => 'tracking', 'type' => 'tinytext', 'null' => false),
+			array('name' => 'blogenabled', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'bloglocked', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'tracking', 'type' => 'tinytext', 'default' => ''),
 			array('name' => 'blograting', 'type' => 'decimal', 'size' => '3.1', 'default' => '0.0', 'null' => false),
 			array('name' => 'blogvotes', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'settings', 'type' => 'varchar', 'size' => '10', 'default' => '', 'null' => false),
-			array('name' => 'userpicture', 'type' => 'tinytext', 'null' => false),
+			array('name' => 'userpicture', 'type' => 'tinytext', 'default' => ''),
 		),
 		// index defs
 		array(
@@ -108,8 +108,8 @@ $tabledate = array(
 		array(
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'contID', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'rating', 'type' => 'text', 'null' => false),
-			array('name' => 'voter', 'type' => 'text', 'null' => false),
+			array('name' => 'rating', 'type' => 'text', 'default' => ''),
+			array('name' => 'voter', 'type' => 'text', 'default' => ''),
 		),
 		// index defs
 		array(
@@ -125,9 +125,9 @@ $tabledate = array(
 		array(
 			array('name' => 'ID', 'type' => 'int', 'null' => false, 'auto' => true),
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'name', 'type' => 'tinytext', 'null' => false),
+			array('name' => 'name', 'type' => 'tinytext', 'default' => ''),
 			array('name' => 'corder', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'depth', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
+			array('name' => 'depth', 'type' => 'smallint', 'default' => '0', 'null' => false),
 		),
 		// index defs
 		array(
@@ -146,17 +146,17 @@ $tabledate = array(
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'ip_address', 'type' => 'varchar', 'size' => '16', 'default' => '', 'null' => false),
 			array('name' => 'categorie', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'nbr_comment', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
-			array('name' => 'allowcomment', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
-			array('name' => 'allow_view', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
+			array('name' => 'nbr_comment', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'allowcomment', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'allow_view', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'date_created', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'date_lastedit', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'published', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
-			array('name' => 'notify', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
+			array('name' => 'published', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'notify', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'views', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'subject', 'type' => 'tinytext', 'null' => false),
-			array('name' => 'body', 'type' => 'text', 'default' => '', 'null' => false),
-			array('name' => 'depth', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
+			array('name' => 'subject', 'type' => 'tinytext', 'default' => ''),
+			array('name' => 'body', 'type' => 'text', 'default' => ''),
+			array('name' => 'depth', 'type' => 'smallint', 'default' => '0', 'null' => false),
 		),
 		// index defs
 		array(
@@ -178,12 +178,12 @@ $tabledate = array(
 			array('name' => 'ip_address', 'type' => 'varchar', 'size' => '16', 'default' => '', 'null' => false),
 			array('name' => 'contID', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'parent', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'treelevel', 'type' => 'smallint', 'size' => '6', 'default' => '0', 'null' => false),
+			array('name' => 'treelevel', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'treeS2', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'date_created', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'date_lastedit', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'subject', 'type' => 'tinytext', 'null' => false),
-			array('name' => 'body', 'type' => 'text', 'default' => '', 'null' => false),
+			array('name' => 'subject', 'type' => 'tinytext', 'default' => ''),
+			array('name' => 'body', 'type' => 'text', 'default' => ''),
 		),
 		// index defs
 		array(

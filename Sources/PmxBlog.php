@@ -2309,31 +2309,13 @@ function Load_Wysiwyg($what)
 }
 
 // get access for the html editor
+// get access for the html editor
 function getEditorAcs($groups)
 {
-	global $context, $user_info, $smcFunc;
-
-	if($context['PmxBlog']['UID'] != $user_info['id'])
-	{
-		$req = $smcFunc['db_query']('', '
-			SELECT id_group, id_post_group, additional_groups
-			FROM {db_prefix}members
-			WHERE id_member = {int:mem}',
-			array('mem' =>  $context['PmxBlog']['UID'])
-		);
-		if($row = $smcFunc['db_fetch_assoc']($req))
-		{
-			$memgroups = array_merge(array($row['id_group'], $row['id_post_group']), explode(',', $row['additional_groups']));
-			$smcFunc['db_free_result']($req);
-		}
-		else
-			$memgroups = array();
-	}
-	else
-		$memgroups = $user_info['groups'];
+	global $user_info;
 
 	$access = false;
-	foreach($memgroups as $g)
+	foreach($user_info['groups'] as $g)
 		$access = (in_array($g, $groups) ? true : $access);
 
 	return $access;
