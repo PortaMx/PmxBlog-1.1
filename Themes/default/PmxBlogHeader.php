@@ -161,7 +161,7 @@ function Pmx_Header($head, $isContent = false)
 					?	($context['PmxBlog']['action'][0] != 'setup'
 						?	'<div class="plainbox funclaunch"><a class="blogbutton" href="'. $scripturl .'?action=pmxblog;sa=manager;setup'. $cameFrom .getOwnerLink($head['userid']).$ContLink.'">'. $txt['PmxBlog_funclaunch'].$txt['PmxBlog_blogset_link'] .'</a></div>'
 						:	($context['PmxBlog']['action'][0] == 'setup'
-							?	'<div class="plainbox funcexit"><a class="blogbutton" href="'. $scripturl .'?action=pmxblog;sa='. $cameFrom . getOwnerLink($head['userid']).$ContLink .'">'. $txt['PmxBlog_funcexit'] . $txt['PmxBlog_blogset_link'].'</a></div>'
+							?	'<div class="plainbox funcexit"><a class="blogbutton" href="'. $scripturl .'?action=pmxblog;sa='.(!empty($context['PmxBlog']['Manager']['have_blog']) ? 'view' : 'list'). getOwnerLink($head['userid']).$ContLink .'">'. $txt['PmxBlog_funcexit'] . $txt['PmxBlog_blogset_link'].'</a></div>'
 							:	''
 							)
 						).'

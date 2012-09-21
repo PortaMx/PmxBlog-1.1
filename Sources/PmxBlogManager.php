@@ -18,7 +18,6 @@ function PmxBlogManager($mode, $pagelist)
 
 	// check access
 	isAllowedToBlog($mode);
-	$context['PmxBlog']['mode'] = $mode;
 
 	$uid = $context['PmxBlog']['UID'];
 	if($mode == 'manager' && !isOwner($uid))
@@ -37,6 +36,7 @@ function PmxBlogManager($mode, $pagelist)
 		// Tracking change / Mark all read
 		Check_Track_MarkRD($uid);
 
+	$context['PmxBlog']['mode'] = $mode;
 	$context['PmxBlog']['Manager']['andRQ'] = '';
 	$context['PmxBlog']['Manager']['refmin'] = '';
 	$context['PmxBlog']['Manager']['refmax'] = '';
