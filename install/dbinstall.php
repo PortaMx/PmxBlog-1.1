@@ -91,7 +91,7 @@ $tabledate = array(
 			array('name' => 'blogenabled', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'bloglocked', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'tracking', 'type' => 'tinytext', 'null' => false),
-			array('name' => 'blograting', 'type' => 'decimal', 'size' => '3,1', 'default' => '0.0', 'null' => false),
+			array('name' => 'blograting', 'type' => 'decimal(3,1)', 'default' => '0', 'null' => false),
 			array('name' => 'blogvotes', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'settings', 'type' => 'varchar', 'size' => '10', 'default' => '', 'null' => false),
 			array('name' => 'userpicture', 'type' => 'tinytext', 'null' => false),
@@ -455,16 +455,8 @@ function check_columns($cols, $data)
 			if(array_key_exists($col['name'], $data))
 			{
 				$check = $data[$col['name']];
-				reset($col);
-				while(list($def, $val) = each($col))
-				{
-					if($def == 'type' && $val == 'decimal')
-					{
-						$val .= '('. $col['size'] .')';
-						$col['size'] = null;
-					}
-					$drop = ((is_null($check[$def]) || isset($check[$def])) && ($check[$def] == $val || ($check[$def] == "''" && empty($val)))) ? $drop : true;
-				}
+				foreach($col as $def => $val)
+					$drop = (isset($check[$def]) && ($check[$def] == $val || ($check[$def] == "''" && empty($val)))) ? $drop : true;
 			}
 			else
 				$drop = true;
