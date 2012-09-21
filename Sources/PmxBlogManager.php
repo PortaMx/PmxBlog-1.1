@@ -932,12 +932,14 @@ function PmxBlogManager($mode, $pagelist)
 						'id' => 'pmxblog',
 					);
 					$context['visual_verification'] = create_control_verification($verificationOptions, true);
-
 					if(is_array($context['visual_verification']))
 					{
-						$_SESSION['PmxBlog_cmnt_body'] = isset($_POST['body']) ? $_POST['body'] : '';
+						if(!empty($_POST['body']))
+							$_SESSION['PmxBlog_cmnt_body'] = $_POST['body'];
 						PmxBlog_Error($txt['PmxBlog_captcha_err_title'], $txt['PmxBlog_captcha_err_msg'], $rdir);
 					}
+					elseif(isset($_SESSION['PmxBlog_cmnt_body']))
+						unset($_SESSION['PmxBlog_cmnt_body']);
 				}
 
 				$body = '';

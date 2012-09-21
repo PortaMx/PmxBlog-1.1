@@ -285,10 +285,6 @@ function PmxBlog()
 		$_SESSION['PmxBlog_Request']['last'] = $_SESSION['PmxBlog_Request']['curr'];
 	$_SESSION['PmxBlog_Request']['curr'] = $_SERVER['QUERY_STRING'];
 
-	// clear the captcha session
-	if(isset($_SESSION['PmxBlog_captcha']) && !in_array(str_replace(';$', '', $_SERVER['QUERY_STRING']) , $_SESSION['PmxBlog_captcha']['request']))
-		unset($_SESSION['PmxBlog_captcha']);
-
 	// add PmxBlog styles to header
 	if(file_exists($settings['theme_dir'] .'/pmxblog_core.css'))
 		$context['html_headers'] .= '

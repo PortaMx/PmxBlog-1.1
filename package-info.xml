@@ -14,6 +14,8 @@
 		<require-dir name="Themes" destination="$boarddir" />
 		<require-dir name="Sources" destination="$boarddir" />
 		<require-dir name="editor_thumbnails" destination="$boarddir" />
+		<require-dir name="fckeditor" destination="$boarddir" />
+		<require-dir name="editor_uploads" destination="$boarddir" />
 		<require-file name="PmxBlogSSI.php" destination="$boarddir" />
 		<require-file name="PmxBlogSSI_example.php" destination="$boarddir" />
 		<require-file name="PmxBlogSSI_example.shtml" destination="$boarddir" />
@@ -29,7 +31,6 @@
 		<remove-file name="$sourcedir/PmxBlog.php" />
 		<remove-file name="$sourcedir/PmxBlogManager.php" />
 		<remove-file name="$sourcedir/PmxBlogAdmin.php" />
-		<remove-file name="$sourcedir/PmxBlogCaptcha.php" />
 		<remove-file name="$sourcedir/PmxBlogSettings.php" />
 		<remove-file name="$sourcedir/PmxBlogPortaMx.php" />
 		<remove-file name="$themedir/languages/PmxBlog.german-utf8.php" />
