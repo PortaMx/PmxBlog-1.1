@@ -66,8 +66,8 @@ $tabledate = array(
 		// column defs
 		array(
 			array('name' => 'ID', 'type' => 'int', 'null' => false, 'auto' => true),
-			array('name' => 'name', 'type' => 'varchar', 'size' => '25', 'default' => ''),
-			array('name' => 'value', 'type' => 'text', 'default' => ''),
+			array('name' => 'name', 'type' => 'varchar', 'size' => '25', 'default' => '', 'null' => false),
+			array('name' => 'value', 'type' => 'text', 'null' => false),
 		),
 		// index defs
 		array(
@@ -81,8 +81,8 @@ $tabledate = array(
 		// column defs
 		array(
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'blogname', 'type' => 'tinytext', 'default' => ''),
-			array('name' => 'blogdesc', 'type' => 'tinytext', 'default' => ''),
+			array('name' => 'blogname', 'type' => 'tinytext', 'null' => false),
+			array('name' => 'blogdesc', 'type' => 'tinytext', 'null' => false),
 			array('name' => 'showarchive', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'showcategories', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'showcalendar', 'type' => 'smallint', 'default' => '0', 'null' => false),
@@ -90,11 +90,11 @@ $tabledate = array(
 			array('name' => 'hidebaronedit', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'blogenabled', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'bloglocked', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'tracking', 'type' => 'tinytext', 'default' => ''),
+			array('name' => 'tracking', 'type' => 'tinytext', 'null' => false),
 			array('name' => 'blograting', 'type' => 'decimal', 'size' => '3.1', 'default' => '0.0', 'null' => false),
 			array('name' => 'blogvotes', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'settings', 'type' => 'varchar', 'size' => '10', 'default' => '', 'null' => false),
-			array('name' => 'userpicture', 'type' => 'tinytext', 'default' => ''),
+			array('name' => 'userpicture', 'type' => 'tinytext', 'null' => false),
 		),
 		// index defs
 		array(
@@ -109,8 +109,8 @@ $tabledate = array(
 		array(
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'contID', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'rating', 'type' => 'text', 'default' => ''),
-			array('name' => 'voter', 'type' => 'text', 'default' => ''),
+			array('name' => 'rating', 'type' => 'text', 'null' => false),
+			array('name' => 'voter', 'type' => 'text', 'null' => false),
 		),
 		// index defs
 		array(
@@ -126,7 +126,7 @@ $tabledate = array(
 		array(
 			array('name' => 'ID', 'type' => 'int', 'null' => false, 'auto' => true),
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'name', 'type' => 'tinytext', 'default' => ''),
+			array('name' => 'name', 'type' => 'tinytext', 'null' => false),
 			array('name' => 'corder', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'depth', 'type' => 'smallint', 'default' => '0', 'null' => false),
 		),
@@ -155,8 +155,8 @@ $tabledate = array(
 			array('name' => 'published', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'notify', 'type' => 'smallint', 'default' => '0', 'null' => false),
 			array('name' => 'views', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'subject', 'type' => 'tinytext', 'default' => ''),
-			array('name' => 'body', 'type' => 'text', 'default' => ''),
+			array('name' => 'subject', 'type' => 'tinytext', 'null' => false),
+			array('name' => 'body', 'type' => 'text', 'null' => false),
 			array('name' => 'depth', 'type' => 'smallint', 'default' => '0', 'null' => false),
 		),
 		// index defs
@@ -183,8 +183,8 @@ $tabledate = array(
 			array('name' => 'treeS2', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'date_created', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'date_lastedit', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'subject', 'type' => 'tinytext', 'default' => ''),
-			array('name' => 'body', 'type' => 'text', 'default' => ''),
+			array('name' => 'subject', 'type' => 'tinytext', 'null' => false),
+			array('name' => 'body', 'type' => 'text', 'null' => false),
 		),
 		// index defs
 		array(
@@ -219,7 +219,7 @@ $tabledate = array(
 		array(
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'userID', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'is_read', 'type' => 'tinytext', 'default' => '', 'null' => false),
+			array('name' => 'is_read', 'type' => 'tinytext', 'null' => false),
 		),
 		// index defs
 		array(
@@ -246,6 +246,10 @@ $settings_data = array(
 	'thumb_show' => '1',
 	'thumb_size' => '100,75',
 	'htmltags' => 'div|span|pre|p|h1|h2|h3|h4|h5|h6|blockquote|code|address',
+	'copyright' => $cpy,
+);
+
+$settings_upddata = array(
 	'copyright' => $cpy,
 );
 
@@ -315,6 +319,29 @@ foreach($tabledate as $tblname => $tbldef)
 				);
 			}
 			_dbinst_write('.. Table successful initiated.<br />');
+		}
+	}
+	else
+	{
+		if($tblname == 'pmxblog_settings')
+		{
+			// update the settings table
+			foreach($settings_upddata as $name => $value)
+			{
+				$smcFunc['db_insert']('', '
+					{db_prefix}pmxblog_settings',
+					array(
+						'name' => 'string',
+						'value' => 'string'
+					),
+					array(
+						$name,
+						$value
+					),
+					array('ID')
+				);
+			}
+			_dbinst_write('.. Table successful updated.<br />');
 		}
 	}
 }
