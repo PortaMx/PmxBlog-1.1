@@ -22,7 +22,7 @@ function template_main()
 	{
 		Pmx_Header($context['PmxBlog']['Manager']);
 
-		$cameFrom = !empty($_GET['cfr']) ? ';cfr='. $_GET['cfr'] : '';
+		$cameFrom = !empty($_GET['cfr']) ? ';cfr='. $_GET['cfr'] : ';cfr=view';
 		echo '
 		<div class="pmxblog_headpad"></div>';
 

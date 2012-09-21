@@ -2189,10 +2189,10 @@ function ReadListSort($a, $b)
 }
 
 // create grafical buttons
-function make_button($name, $desc, $align = 'super')
+function make_button($name, $desc, $align = '')
 {
 	global $settings;
-	return '<img src="' . $settings['default_images_url'] . $name .'.gif" alt="" /><span style="vertical-align:'. $align .';"><b>'. $desc .'</b></span>';
+	return '<img src="' . $settings['default_images_url'] . $name .'.gif" alt=""'. ($align != 'middle' ? ' style="vertical-align:'. ($align == 'bottom' ? '-3' : '-5') .'px;"' : '') .'/><b>'. $desc .'</b>';
 }
 
 // create grafical buttons

@@ -127,8 +127,8 @@ $txt['PmxBlog_cat_moveright'] = 'Move RIGHT';
 $txt['PmxBlog_cat_edit'] = 'EDIT Categorie';
 $txt['PmxBlog_cat_delete'] = 'DELETE Categorie';
 
-$txt['PmxBlog_newcat'] = make_button('/buttons/im_reply','Add new', 'middle');
-$txt['PmxBlog_readmore'] = make_button('/icons/last_post', 'Read more..', 'bottom');
+$txt['PmxBlog_newcat'] = make_button('/buttons/im_reply', 'Add new');
+$txt['PmxBlog_readmore'] = make_button('/icons/last_post', ' Read more..', 'bottom');
 $txt['PmxBlog_write_reply'] = make_button('/buttons/quote', 'Reply');
 $txt['PmxBlog_writecomment'] = make_button('/buttons/reply', 'Comment');
 $txt['PmxBlog_no_comment'] = array(' (not allowed)', ' (not active)');
@@ -184,7 +184,7 @@ $txt['PmxBlog_remblog'] = 'REMOVE THIS BLOG';
 $txt['PmxBlog_confirmblogdel'] = 'Are you sure to proceed removing of this Blog?';
 
 $txt['PmxBlog_send'] = 'Save';
-$txt['PmxBlog_back'] = 'Back';
+$txt['PmxBlog_back'] = 'Cancel';
 
 $txt['PmxBlog_rem_url'] = 'Removed link: ';
 $txt['PmxBlog_rem_img'] = 'Removed image: ';

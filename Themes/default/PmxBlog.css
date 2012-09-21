@@ -23,13 +23,14 @@
 	padding: 0 !important;
 	margin: -1px 0 0 0 !important;
 	background: transparent;
+	color: inherit !important;
 }
 .pmxblog_cmnt
 {
-	border-top-width: 0;
 	padding: 0 !important;
 	margin: 0 !important;
 	background: transparent;
+	color: inherit !important;
 }
 .pmxblog_rule
 {
@@ -40,6 +41,7 @@
 	background: transparent;
 	line-height: 1px !important;
 	clear: both;
+	color: inherit !important;
 }
 /* page index */
 .pmxblog_pageidx
@@ -124,6 +126,7 @@ a.blogbutton:hover
 	border-right-width: 5px;
 	border-left-width: 0;
 	margin-left: 10px;
+	color: inherit !important;
 }
 .funcexit, .funcexit2
 {
@@ -134,6 +137,7 @@ a.blogbutton:hover
 	border-right-width: 0;
 	margin-right: 0px;
 	text-align: left;
+	color: inherit !important;
 }
 .funcexit2
 {
@@ -143,6 +147,7 @@ a.blogbutton:hover
 {
 	background: transparent;
 	border-width: 0 0 1px 0;
+	color: inherit !important;
 }
 .pmxblog_headpad
 {

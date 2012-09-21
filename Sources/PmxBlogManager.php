@@ -14,7 +14,7 @@ if (!defined('SMF'))
 // PmxBlog Manager
 function PmxBlogManager($mode, $pagelist)
 {
-	global $context, $settings, $user_info, $scripturl, $sourcedir, $txt, $smcFunc;
+	global $context, $settings, $modSettings, $user_info, $scripturl, $sourcedir, $txt, $smcFunc;
 
 	// check access
 	isAllowedToBlog($mode);
@@ -925,7 +925,7 @@ function PmxBlogManager($mode, $pagelist)
 			// save comment or replay
 			elseif(isset($_GET['store']))
 			{
-				if($user_info['is_guest'])
+				if($user_info['is_guest'] && !empty($modSettings['reg_verification']))
 				{
 					require_once($sourcedir . '/Subs-Editor.php');
 					$verificationOptions = array(

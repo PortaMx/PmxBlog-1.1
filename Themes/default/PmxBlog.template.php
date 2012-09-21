@@ -583,7 +583,7 @@ function template_main()
 					$context['visual_verification'] = create_control_verification($verificationOptions);
 					$context['visual_verification_id'] = $verificationOptions['id'];
 
-					echo '
+						echo '
 				<div class="tilebg" style="padding:5px; text-align:center;">'. $txt['PmxBlog_cmnt_captcha'] .'</div>
 				<fieldset class="content centertext">
 					', template_control_verification($context['visual_verification_id'], 'all'), '
@@ -600,7 +600,7 @@ function template_main()
 			</form>
 
 			<div class="titlebg2 pmxblog_corecmnt" style="padding:2px 5px; margin-top:5px;">'.
-				Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), '<span style="font-weight:normal;">'. $cmt['treeS2'] .' - </span>'.$cmt['subject']) .'
+				Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), $cmt['subject']) .'
 			</div>
 			<div class="plainbox pmxblog_cmnt">
 			<div class="windowbg2" style="padding:2px 5px;">
@@ -678,7 +678,7 @@ function template_main()
 			</form>
 
 			<div class="titlebg2 pmxblog_corecmnt" style="padding:2px 5px; margin-top:5px;">'.
-				Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), '<span style="font-weight:normal;">'. $cmt['treeS2'] .' - </span>'.$cmt['subject']) .'
+				Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), $cmt['subject']) .'
 			</div>
 			<div class="plainbox pmxblog_cmnt">
 			<div class="windowbg2" style="padding:2px 5px;">
@@ -1001,8 +1001,8 @@ function template_main()
 									($cmt['is_new_cmnt'] ? '<a name="new"></a>' : '').'
 									<div class="plainbox pmxblog_cmnt">
 										<div class="windowbg2">
-											<div class="titlebg pmxblog_corecmnt" style="padding:2px 5px;">'.
-												Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), '<span style="font-weight:normal;">'. $cmt['treeS2'] .' - </span>'.$cmt['subject']) .'
+											<div class="titlebg pmxblog_corecmnt blogbutton" style="padding:3px 5px;">'.
+												Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), $cmt['subject']) .'
 											</div>
 											<div style="padding:2px 4px;">
 												<div class="smalltext" style="clear:both;">
