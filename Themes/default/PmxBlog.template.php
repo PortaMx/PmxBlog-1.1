@@ -395,16 +395,17 @@ function template_main()
 			</table>
 
 			<div class="plainbox pmxblog_border">
-			<div class="windowbg2" style="padding:10px 5px;">'.
-				($user_info['is_guest']
-				?	'<div style="text-align:right; width:15%; margin-right:5px; float:left;">'. $txt['PmxBlog_username'] .'</div>
-					<input name="username" type="text" size="30" value="'.$txt['PmxBlog_guestname'].'" style="width: 50%;" />
-					<div style="padding:2px;"></div>'
-				:	''
-				).'
-				<div style="text-align:right; width:15%; margin-right:5px; float:left;">'. $txt['PmxBlog_blogtitle'] .'</div>
-				<input name="subject" type="text" size="50" value="Re: '.$blog['subject'].'" style="width: 75%;" />
-				<div style="padding:2px;"></div>';
+			<div class="windowbg2" style="padding:5px 5px 10px 5px;">
+				<div style="padding:0 10px 4px 10px;">
+					<b>Re: '.$blog['subject'].'</b>
+					<hr />'.
+					($user_info['is_guest']
+						?	$txt['PmxBlog_username'] .'
+						<input name="username" type="text" size="30" value="'.$txt['PmxBlog_guestname'].'" style="width: 50%;" />'
+						: ''
+					) .'
+				</div>
+				<input name="subject" type="hidden" value="Re: '.$blog['subject'].'" />';
 
 				if(!empty($_SESSION['PmxBlog_cmnt_body']))
 				{
@@ -516,6 +517,8 @@ function template_main()
 			if(isBlogEnabled())
 			{
 			foreach($context['PmxBlog']['comments'] as $cmt);
+			$subj = 'Re: '. preg_replace('@Re[^:( )]*?:( )@i', '', $cmt['subject']);
+
 			echo '
 			<form id="pmx_form" name="PmxManager_newblog" action="' .$scripturl. '?action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$cmt['id'].';store=rply'. $context['PmxBlog']['UserLink'] .'" enctype="multipart/form-data" method="post" style="padding:0px; margin:0px">
 			<table class="table_grid pmxblog_th" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-width:0;">
@@ -525,20 +528,21 @@ function template_main()
 						<th class="last_th" scope="col" width="2%"></th>
 					</tr>
 				</thead>
-					<tr><td colspan="2" class="pmxblog_empty"></td></tr>
-				</table>
+				<tr><td colspan="2" class="pmxblog_empty"></td></tr>
+			</table>
 
 			<div class="plainbox pmxblog_border">
-			<div class="windowbg2" style="padding:10px 5px;">'.
-				($user_info['is_guest']
-				?	'<div style="text-align:right; width:15%; margin-right:5px; float:left;">'. $txt['PmxBlog_username'] .'</div>
-					<input name="username" type="text" size="30" value="'.$txt['PmxBlog_guestname'].'" style="width: 50%;" />
-					<div style="padding:2px;"></div>'
-				:	''
-				).'
-				<div style="text-align:right; width:15%; margin-right:5px; float:left;">'. $txt['PmxBlog_blogtitle'] .'</div>
-				<input name="subject" type="text" size="50" value="Re: '. preg_replace('@Re[^:( )]*?:( )@i', '', $cmt['subject']) .'" style="width: 75%;" />
-				<div style="padding:2px;"></div>';
+			<div class="windowbg2" style="padding:5px 5px 10px 5px;">
+				<div style="padding:0 10px 4px 10px;">
+					<b>'. $subj .'</b>
+					<hr />'.
+					($user_info['is_guest']
+						?	$txt['PmxBlog_username'] .'
+						<input name="username" type="text" size="30" value="'.$txt['PmxBlog_guestname'].'" style="width: 50%;" />'
+						: ''
+					) .'
+				</div>
+				<input name="subject" type="hidden" value="'. $subj .'" />';
 
 				if(!empty($_SESSION['PmxBlog_cmnt_body']))
 				{
@@ -633,11 +637,17 @@ function template_main()
 			</table>
 
 			<div class="plainbox pmxblog_border">
-			<div class="windowbg2" style="padding:10px 5px;">
-				<div style="text-align:right; width:15%; margin-right:5px; float:left;">
-				'. $txt['PmxBlog_blogtitle'] .'</div>
-				<input name="subject" type="text" size="50" value="'.$cmt['subject'].'" style="width: 75%;" />
-				<div style="padding:2px;"></div>';
+			<div class="windowbg2" style="padding:5px 5px 10px 5px;">
+				<div style="padding:0 10px 4px 10px;">
+					<b>'.$cmt['subject'].'</b>
+					<hr />'.
+					($user_info['is_guest']
+						?	$txt['PmxBlog_username'] .'
+						<input name="username" type="text" size="30" value="'.$txt['PmxBlog_guestname'].'" style="width: 50%;" />'
+						: ''
+					) .'
+				</div>
+				<input name="subject" type="hidden" value="'. $cmt['subject'] .'" />';
 
 				EditComment_xhtml($cmt['body']);
 
@@ -677,17 +687,19 @@ function template_main()
 			</div>
 			</form>
 
-			<div class="titlebg2 pmxblog_corecmnt" style="padding:2px 5px; margin-top:5px;">'.
+			<div class="titlebg pmxblog_corecmnt blogbutton" style="padding:2px 5px; margin-top:5px;">'.
 				Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), $cmt['subject']) .'
 			</div>
 			<div class="plainbox pmxblog_cmnt">
-			<div class="windowbg2" style="padding:2px 5px;">
-				<div class="smalltext" style="padding:2px 5px;">
-				'. $txt['PmxBlog_by'] . '<a href="'.$scripturl.'?action=profile;u='.$cmt['userid'].'"><b>'. $cmt['realname'] .'</b></a> '. $txt['PmxBlog_on'] . $cmt['date_created'], ($cmt['date_edit'] != 0 && $cmt['is_edit']) ? $txt['PmxBlog_lastedit'] . $cmt['date_edit'] : '', '<br />
+				<div class="windowbg2" style="padding:2px 0px">
+					<div class="smalltext" style="padding:2px 5px;">
+						'. $txt['PmxBlog_by'] . '<a href="'.$scripturl.'?action=profile;u='.$cmt['userid'].'"><b>'. $cmt['realname'] .'</b></a> '. $txt['PmxBlog_on'] . $cmt['date_created'], ($cmt['date_edit'] != 0 && $cmt['is_edit']) ? $txt['PmxBlog_lastedit'] . $cmt['date_edit'] : '', '
+					</div>
+					<hr />
+					<div style="margin:-2px 5px 4px 5px;">'. $cmt['body'] .'</div>
 				</div>
-				<div style="padding:2px 5px;">'. $cmt['body'] .'</div>
 			</div>
-			</div>
+
 			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</td>';
 
@@ -1004,7 +1016,7 @@ function template_main()
 											<div class="titlebg pmxblog_corecmnt blogbutton" style="padding:3px 5px;">'.
 												Title_button('comment'.($cmt['is_new_cmnt'] ? '_new' : ''), $cmt['subject']) .'
 											</div>
-											<div style="padding:2px 4px;">
+											<div style="padding:2px 5px;">
 												<div class="smalltext" style="clear:both;">
 													'. $txt['PmxBlog_by'] .
 													($cmt['userid'] == 0
@@ -1013,11 +1025,12 @@ function template_main()
 													).
 													' '.$txt['PmxBlog_on'] . $cmt['date_created']. ($cmt['is_edit'] ?	' &nbsp; - &nbsp; '. $txt['PmxBlog_lastedit'] . $cmt['date_edit'] : '') .'
 												</div>
+												<hr />
 											</div>
 
-											<div style="padding:2px 4px;">'. $cmt['body'] .'</div>
+											<div style="margin:-2px 5px 4px 5px;">'. $cmt['body'] .'</div>
 
-											<div style="padding:4px 2px 0px;">
+											<div style="padding:4px 4px 2px;">
 												<div class="smalltext" style="float:left;clear:right;">'.
 													($blog['allowcomment'][1] && (($user_info['is_guest'] && in_array(-1, $context['PmxBlog']['blog_wr_acs'])) || !$user_info['is_guest'])
 													?	(isBlogEnabled()
@@ -1075,24 +1088,26 @@ function template_PmxBlog_error($errtitle = '', $errmsg = '')
 
 	echo '
 	<div style="width:70%; margin:0 auto; text-align:center;">
-		<h3 class="titlebg" style="text-align:center;">
-			<span class="left"><span></span></span>
-			'.(empty($errtitle) ? $context['PmxBlog_Error']['Title'] : $errtitle) .'
-		</h3>
-		<div class="windowbg2">
-			<span class="topslice"><span></span></span>
-			<div style="padding: 1ex;">'. (empty($errmsg) ? $context['PmxBlog_Error']['Msg'] : $errmsg) .'</div>
-			<div align="center" style="margin-top: 1ex;">';
-			if(empty($context['PmxBlog_Error']['Link']))
-				echo '
-				<input type="button" class="button_submit" name="back" value="', $txt['back'], '" onclick=\'window.history.back()\' />';
-			else
-				echo '
-				<input type="button" class="button_submit" name="back" value="', $txt['back'], '" onclick=\'window.location.href="', $context['PmxBlog_Error']['Link'] ,'"\' />';
-			echo '
-				</div>
-			<span class="botslice"><span></span></span>
+		<div class="title_bar">
+			<h3 class="titlebg" style="text-align:center;">
+				'.(empty($errtitle) ? $context['PmxBlog_Error']['Title'] : $errtitle) .'
+			</h3>
 		</div>
+		<span class="upperframe"><span></span></span>
+		<div class="roundframe">
+			<div style="padding: 0.2em 0.5em;">'. (empty($errmsg) ? $context['PmxBlog_Error']['Msg'] : $errmsg) .'</div>
+			<div align="center" style="margin-top: 1ex;">';
+
+	if(empty($context['PmxBlog_Error']['Link']))
+		echo '
+				<input type="button" class="button_submit" name="back" value="', $txt['back'], '" onclick=\'window.history.back()\' />';
+	else
+		echo '
+				<input type="button" class="button_submit" name="back" value="', $txt['back'], '" onclick=\'window.location.href="', $context['PmxBlog_Error']['Link'] ,'"\' />';
+	echo '
+			</div>
+		</div>
+		<span class="lowerframe"><span></span></span>
 	</div>
 	<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>';
 }
