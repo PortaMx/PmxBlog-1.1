@@ -51,9 +51,9 @@ function PmxBlog_init($CalledFrom = '')
 	$context['PmxBlog']['editholdtime'] = 60 * 60 * 2;	// isedit set after 2 hours
 	$context['PmxBlog']['fontnames'] = array('xx-small' => '5pt', 'x-small' => '8pt', 'small' => '9pt', 'larger' => '11pt', 'medium' => '13pt', 'large' => '14pt', 'x-large' => '18pt', 'xx-large' => '24pt');
 
-	// reset the Image cookie for PortaMx block manager
-	if(isset($_REQUEST['area']) && $_REQUEST['area'] == 'pmx_blocks')
-		setcookie('PmxBlogImgcfg', '0');
+	// reset the Image cookie
+	if(empty($_REQUEST['action']) || (isset($_REQUEST['action']) && $_REQUEST['action'] != 'pmxblog'))
+		setcookie('PmxBlogImgcfg', '0', time() - 1000, '/');
 
 	// load all settings
 	if(($temp = cache_get_data('PmxBlogSettings', 10)) !== null)
@@ -289,9 +289,6 @@ function PmxBlog()
 	if(isset($_SESSION['PmxBlog_captcha']) && !in_array(str_replace(';$', '', $_SERVER['QUERY_STRING']) , $_SESSION['PmxBlog_captcha']['request']))
 		unset($_SESSION['PmxBlog_captcha']);
 
-	// setup the ImagePrefix for html editor
-	$context['PmxBlogImgcfg'] = base64_encode($context['PmxBlog']['image_prefix'] .'|'. $user_info['id'] .'|'. (AllowedTo('admin_forum')? '1' : '0'));
-
 	// add PmxBlog styles to header
 	if(file_exists($settings['theme_dir'] .'/pmxblog_core.css'))
 		$context['html_headers'] .= '
@@ -505,7 +502,7 @@ function PmxBlog()
 			),
 			'yourblogsettings' => array(
 				'title' => $txt['PmxBlog_set_newblog_nav'],
-				'href' => $scripturl . '?action=pmxblog;sa=manager;set',
+				'href' => $scripturl . '?action=pmxblog;sa=manager;setup',
 				'image' => $settings['default_images_url'] .'/PmxBlog/blogico2.gif',
 				'is_selected' => $context['PmxBlog']['subact'] == 'manager' && isset($_GET['set']),
 				'is_enabled' => AllowedToBlog('manager', $user_info['id']) && empty($context['PmxBlog']['blogexist']),
@@ -2285,7 +2282,8 @@ function Load_Wysiwyg($what)
 	if(getEditorAcs($context['PmxBlog'][$what]) && $userED)
 	{
 		//set ImagePrefix Cookie for xhtml editor
-		setcookie('PmxBlogImgcfg', $context['PmxBlogImgcfg']);
+		if(!AllowedTo('admin_forum') && empty($context['PmxBlog']['image_prefix']))
+			setcookie('PmxBlogImgcfg', '_member_/'. strval($user_info['id']), 0, '/');
 		require_once($boarddir .'/fckeditor/fckeditor.php');
 	}
 	else

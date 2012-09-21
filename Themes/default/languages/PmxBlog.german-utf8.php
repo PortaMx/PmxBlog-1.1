@@ -216,8 +216,8 @@ $txt['PmxBlog_acticle_ispublished'] = 'Veröffentlicht';
 $txt['PmxBlog_bloglist_sort'] = ' Sortieren nach: ';
 $txt['PmxBlog_bloglist_sortmode'] = array('Benutzername', 'Anzahl Beiträge', 'Anzahl Gesehen', 'Bewertung');
 
-$txt['PmxBlog_cmnt_captcha'] = '<b>Visuelle Überprüfung:</b><br /><br /><span class="smalltext">Gib die im Bild gezeigten Zeichen ein';
-$txt['PmxBlog_captcha_err_title'] = 'Fehler bei der Visuellen &Uuml;berpr&uuml;fung';
+$txt['PmxBlog_cmnt_captcha'] = '<b>Visuelle Überprüfung:</b>';
+$txt['PmxBlog_captcha_err_title'] = 'Fehler bei der Visuellen Überprüfung';
 $txt['PmxBlog_captcha_err_msg'] = 'Du hast keine oder falschen Zeichen eingegeben!<br />Klicke auf <b>Zurück</b> und versuche es noch einmal.';
 $txt['PmxBlog_unknown_err_title'] = 'Ungültige Aktion angefordert';
 $txt['PmxBlog_unknown_err_msg'] = 'Du hast eine ungültige oder unbekannte Aktion angefordert.<br />Klicke auf <b>Zurück</b> und versuche es noch einmal.';

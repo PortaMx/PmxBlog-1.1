@@ -180,7 +180,7 @@ function PmxBlogManager($mode, $pagelist)
 		elseif(isset($_GET['cmnt']))
 			$context['PmxBlog']['action'] = array('cmnt', $_GET['cmnt']);		// Comment
 		elseif(!$context['PmxBlog']['Manager']['have_blog'])
-			$context['PmxBlog']['action'] = array('set', '');
+			$context['PmxBlog']['action'] = array('setup', '');
 	}
 	else
 	{
@@ -927,23 +927,15 @@ function PmxBlogManager($mode, $pagelist)
 			{
 				if($user_info['is_guest'])
 				{
-					if(!isset($_SESSION['PmxBlog_captcha']) || (isset($_SESSION['PmxBlog_captcha']) && strcasecmp($_POST['captcha'], $_SESSION['PmxBlog_captcha']['chars']) != 0))
+					require_once($sourcedir . '/Subs-Editor.php');
+					$verificationOptions = array(
+						'id' => 'pmxblog',
+					);
+					$context['visual_verification'] = create_control_verification($verificationOptions, true);
+
+					if(is_array($context['visual_verification']))
 					{
 						$_SESSION['PmxBlog_cmnt_body'] = isset($_POST['body']) ? $_POST['body'] : '';
-						if(isset($_SESSION['PmxBlog_captcha']['request'][0]))
-							$rdir = $scripturl. '?'. $_SESSION['PmxBlog_captcha']['request'][0];
-						else
-						{
-							$_GET[$_GET['store']] = '';
-							unset($_GET['store']);
-							$rdir = $scripturl .'?'. http_build_query($_GET, '', ';');
-						}
-						if(function_exists('create_sef_url'))
-							$rdir = create_sef_url($rdir);
-
-						if(isset($_SESSION['PmxBlog_captcha']))
-							unset($_SESSION['PmxBlog_captcha']);
-
 						PmxBlog_Error($txt['PmxBlog_captcha_err_title'], $txt['PmxBlog_captcha_err_msg'], $rdir);
 					}
 				}
@@ -1508,29 +1500,5 @@ function ImageRealUrl($content)
 	}
 
 	return $content;
-}
-
-// create a captcha string
-function makeCaptcha($backurl)
-{
-	if(isset($_SESSION['PmxBlog_captcha']) && empty($_SESSION['PmxBlog_captcha']['show']))
-	{
-		$_SESSION['PmxBlog_captcha']['show'] = true;
-		return;
-	}
-
-	$character_range = array_merge(range('A', 'H'), array('K', 'M', 'N', 'P'), range('R', 'Z'));
-	$captcha_str = '';
-	for ($i = 0; $i < 5; $i++)
-		$captcha_str .= $character_range[array_rand($character_range)];
-
-	$_SESSION['PmxBlog_captcha'] = array(
-		'chars' => $captcha_str,
-		'request' => array($_SERVER['QUERY_STRING'], $backurl),
-		'show' => true
-	);
-
-	if(!isset($_SESSION['PmxBlog_cmnt_body']))
-		unset($_SESSION['PmxBlog_cmnt_body']);
 }
 ?>

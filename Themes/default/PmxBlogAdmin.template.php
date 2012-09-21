@@ -74,7 +74,7 @@ function template_main()
 				<tr><td align="right" valign="top" style="padding-top:10px; width:45%;">
 					'. $txt['PmxBlog_image_prefix'] .'
 				</td><td valign="top" style="padding-top:10px;">
-					<input name="image_prefix" type="hidden" value="2" />
+					<input name="image_prefix" type="hidden" value="0" />
 					<input class="check" name="image_prefix" type="checkbox" value="1"', $context['PmxBlog']['image_prefix'] == 1 ? ' checked="checked"': '', ' />
 					'. $txt['PmxBlog_checkbox_help'] .'
 				</td></tr>

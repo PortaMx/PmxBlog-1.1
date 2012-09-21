@@ -216,7 +216,7 @@ $txt['PmxBlog_acticle_ispublished'] = 'Ver&ouml;ffentlicht';
 $txt['PmxBlog_bloglist_sort'] = ' Sortieren nach: ';
 $txt['PmxBlog_bloglist_sortmode'] = array('Benutzername', 'Anzahl Beitr&auml;ge', 'Anzahl Gesehen', 'Bewertung');
 
-$txt['PmxBlog_cmnt_captcha'] = '<b>Visuelle &Uuml;berpr&uuml;fung:</b><br /><br /><span class="smalltext">Gib die im Bild gezeigten Zeichen ein';
+$txt['PmxBlog_cmnt_captcha'] = '<b>Visuelle &Uuml;berpr&uuml;fung:</b>';
 $txt['PmxBlog_captcha_err_title'] = 'Fehler bei der Visuellen &Uuml;berpr&uuml;fung';
 $txt['PmxBlog_captcha_err_msg'] = 'Du hast keine oder falschen Zeichen eingegeben!<br />Klicke auf <b>Zur&uuml;ck</b> und versuche es noch einmal.';
 $txt['PmxBlog_unknown_err_title'] = 'Ung&uuml;ltige Aktion angefordert';

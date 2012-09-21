@@ -26,7 +26,7 @@ function PmxBlog_Admin()
 			$tmp['censor_text'],
 			$tmp['content_pages'],
 			$tmp['remove_images'],
-			$tmp['image_prefix']) = explode(',', '50,20,10,0,10,10,0,2');
+			$tmp['image_prefix']) = explode(',', '50,20,10,0,10,10,0,0');
 
 		$valid_keys = array_unique(array_merge(array('blogadmin', 'thumb_show', 'thumb_size', 'htmltags', 'wysiwyg_edit', 'wysiwyg_comment', 'modgroups'), array_keys($tmp)));
 		foreach ($_POST as $what => $value)

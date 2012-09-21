@@ -30,6 +30,7 @@ if (file_exists(dirname(__FILE__) . '/SSI.php') && !defined('SMF'))
 		}
 	}
 }
+
 // no SSI.php and no SMF?
 elseif (!defined('SMF'))
 	die('<b>Error:</b> SSI.php not found. Please verify you put this in the same place as SMF\'s index.php.');
@@ -218,7 +219,7 @@ $tabledate = array(
 		array(
 			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'userID', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'is_read', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'is_read', 'type' => 'tinytext', 'default' => '', 'null' => false),
 		),
 		// index defs
 		array(
@@ -236,7 +237,7 @@ $cpy = '<a href="http://portamx.com/license" target="_blank">PmxBlog '.$Version.
 
 // pepare the data array
 $settings_data = array(
-	'settings' => '60,20,20,0,0,10,0,2',
+	'settings' => '60,20,20,0,0,10,0,0',
 	'wysiwyg_edit' => 'a:1:{i:0;s:1:"1";}',
 	'wysiwyg_comment' => 'a:1:{i:0;s:1:"1";}',
 	'modgroups' => 'a:0:{}',

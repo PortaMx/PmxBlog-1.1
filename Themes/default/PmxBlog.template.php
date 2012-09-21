@@ -14,7 +14,7 @@ require_once($settings['default_theme_dir'] . '/PmxBlogHeader.php');
 
 function template_main()
 {
-	global $context, $txt, $scripturl, $settings, $modSettings, $options, $user_info, $boarddir, $boardurl;
+	global $context, $txt, $scripturl, $settings, $modSettings, $options, $user_info, $boarddir, $boardurl, $sourcedir;
 
 	Navigation($context['PmxBlog']['nav_tabs']);
 
@@ -406,8 +406,11 @@ function template_main()
 				<input name="subject" type="text" size="50" value="Re: '.$blog['subject'].'" style="width: 75%;" />
 				<div style="padding:2px;"></div>';
 
-				if(isset($_SESSION['PmxBlog_cmnt_body']))
+				if(!empty($_SESSION['PmxBlog_cmnt_body']))
+				{
 					EditComment_xhtml(stripslashes($_SESSION['PmxBlog_cmnt_body']));
+					unset($_SESSION['PmxBlog_cmnt_body']);
+				}
 				else
 					EditComment_xhtml('');
 
@@ -438,7 +441,20 @@ function template_main()
 				// ]]></script>';
 
 				if($user_info['is_guest'])
-					captcha_template('action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$blog['id'].';store=new'.$context['PmxBlog']['UserLink']);
+				{
+					require_once($sourcedir . '/Subs-Editor.php');
+					$verificationOptions = array(
+						'id' => 'pmxblog',
+					);
+					$context['visual_verification'] = create_control_verification($verificationOptions);
+					$context['visual_verification_id'] = $verificationOptions['id'];
+
+					echo '
+				<div class="tilebg" style="padding:5px; text-align:center;">'. $txt['PmxBlog_cmnt_captcha'] .'</div>
+				<fieldset class="content centertext">
+					', template_control_verification($context['visual_verification_id'], 'all'), '
+				</fieldset>';
+				}
 
 				echo '
 				<div align="center" style="vertical-align:middle; padding:3px 5px; margin-top:5px;">
@@ -524,8 +540,11 @@ function template_main()
 				<input name="subject" type="text" size="50" value="Re: '. preg_replace('@Re[^:( )]*?:( )@i', '', $cmt['subject']) .'" style="width: 75%;" />
 				<div style="padding:2px;"></div>';
 
-				if(isset($_SESSION['PmxBlog_cmnt_body']))
+				if(!empty($_SESSION['PmxBlog_cmnt_body']))
+				{
 					EditComment_xhtml(stripslashes($_SESSION['PmxBlog_cmnt_body']));
+					unset($_SESSION['PmxBlog_cmnt_body']);
+				}
 				else
 					EditComment_xhtml('');
 
@@ -556,10 +575,22 @@ function template_main()
 				// ]]></script>';
 
 				if($user_info['is_guest'])
-					captcha_template('action=pmxblog;sa='.$context['PmxBlog']['mode'].';cmnt='.$cmt['id'].';store=rply'. $context['PmxBlog']['UserLink']);
+				{
+					require_once($sourcedir . '/Subs-Editor.php');
+					$verificationOptions = array(
+						'id' => 'pmxblog',
+					);
+					$context['visual_verification'] = create_control_verification($verificationOptions);
+					$context['visual_verification_id'] = $verificationOptions['id'];
+
+					echo '
+				<div class="tilebg" style="padding:5px; text-align:center;">'. $txt['PmxBlog_cmnt_captcha'] .'</div>
+				<fieldset class="content centertext">
+					', template_control_verification($context['visual_verification_id'], 'all'), '
+				</fieldset>';
+				}
 
 				echo '
-				<br />
 				<div align="center" style="vertical-align:middle; padding:3px 5px; margin-top:5px;">
 					<input type="button" class="button_submit" value="' . $txt['PmxBlog_send'] .'" name="send" onclick="cmntrply_submit()" />&nbsp;
 					<input type="button" class="button_submit" value="' . $txt['PmxBlog_back'] .'" name="abort" onclick="window.location=\'' . $scripturl . '?action=pmxblog;sa='. $context['PmxBlog']['mode'].$context['PmxBlog']['pageopt'].$context['PmxBlog']['UserLink'].'\'" />
@@ -960,7 +991,7 @@ function template_main()
 					$blog = $context['PmxBlog']['content'][0];
 					foreach($context['PmxBlog']['comments'] as $cmt)
 					{
-						$ml = ($cmt['treelevel'] -1) * 15;
+						$ml = $cmt['treelevel'] * 15;
 						if($pc >= $context['PmxBlog']['startpage'] && $pc < $context['PmxBlog']['startpage'] + $context['PmxBlog']['comment_pages'])
 						{
 							echo '
@@ -1035,54 +1066,6 @@ function template_main()
 		</tr>
 	</table>';
 	}
-}
-
-// display captcha image
-function captcha_template($backurl)
-{
-	global $settings, $txt, $boardurl;
-
-	makeCaptcha($backurl);
-	$_SESSION['PmxBlog_captcha']['show'] = false;
-	$b64 = base64_encode($_SESSION['PmxBlog_captcha']['chars']);
-	$res = '';
-	for ($i = 0; $i < strlen($b64); $i++)
-		$res .= dechex(ord(substr($b64, $i, 1)));
-	$captcha_str = $res.dechex(mktime());
-	$bdir = str_replace('\\', '/', $settings['default_theme_dir']);
-
-	if(isset($_SESSION['PmxBlog_cmnt_body']))
-		unset($_SESSION['PmxBlog_cmnt_body']);
-
-	echo '
-	<br />
-	<div align="left" valign="middle" style="padding:3px 5px;">
-	<div style="padding-right:10px;padding-top:5px;float:left;">'.$txt['PmxBlog_cmnt_captcha'].'</div>
-	<div>
-		<table cellspacing="0" cellpadding="0" border="0">
-			<tr>';
-			if(in_array('gd', get_loaded_extensions()))
-				echo '
-				<td style="margin-top:2px;height:28px;width:130;">
-					<img src="', $boardurl . '/Sources/PmxBlogCaptcha.php?vcode='.$captcha_str.'&path='.$bdir, '" alt="" />';
-			else
-				echo '
-				<td "style="margin-top:2px;height:28px;width:130;background-repeat:no-repeat;background-image: url('.$settings['default_images_url'].'/PmxBlog/backgnd.gif)">
-					<img src="', $boardurl . '/Sources/PmxBlogCaptcha.php?vcode='.$captcha_str.'&path='.$bdir.'&letter=1', '" alt="" style="margin:-2px -9px -6px 7px;" />
-					<img src="', $boardurl . '/Sources/PmxBlogCaptcha.php?vcode='.$captcha_str.'&path='.$bdir.'&letter=2', '" alt="" style="margin:-2px -9px -6px 0px;" />
-					<img src="', $boardurl . '/Sources/PmxBlogCaptcha.php?vcode='.$captcha_str.'&path='.$bdir.'&letter=3', '" alt="" style="margin:-2px -9px -6px 0px;" />
-					<img src="', $boardurl . '/Sources/PmxBlogCaptcha.php?vcode='.$captcha_str.'&path='.$bdir.'&letter=4', '" alt="" style="margin:-2px -9px -6px 0px;" />
-					<img src="', $boardurl . '/Sources/PmxBlogCaptcha.php?vcode='.$captcha_str.'&path='.$bdir.'&letter=5', '" alt="" style="margin:-2px -9px -6px 0px;" />';
-			echo '
-				</td>
-			</tr>
-			<tr>
-				<td style="padding-top:2px;">
-					<input class="normaltext" type="text" name="captcha" size="8" style="width:118px;" />
-				</td>
-			</tr>
-		</table>
-	</div>';
 }
 
 // Show an error message.....

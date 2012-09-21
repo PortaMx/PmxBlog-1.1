@@ -217,7 +217,7 @@ $txt['PmxBlog_acticle_ispublished'] = 'Published';
 $txt['PmxBlog_bloglist_sort'] = 'Sort by: ';
 $txt['PmxBlog_bloglist_sortmode'] = array('Username', 'Content count', 'View count', 'Rating');
 
-$txt['PmxBlog_cmnt_captcha'] = '<b>Visual verification:</b><br /><br /><span class="smalltext">Type the letters shown in the picture</span>';
+$txt['PmxBlog_cmnt_captcha'] = '<b>Visual verification</b>';
 $txt['PmxBlog_captcha_err_title'] = 'Visual verification error';
 $txt['PmxBlog_captcha_err_msg'] = 'You have entered a empty or bad verification string.<br />Click on <b>Back</b> and try again.';
 $txt['PmxBlog_unknown_err_title'] = 'Illegal action request';
