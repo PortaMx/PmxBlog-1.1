@@ -45,13 +45,24 @@ $txt['PmxBlog_usewysiwygcmt'] = 'Benutzer Gruppen die den Html-Editor für Komme
 $txt['PmxBlog_moderatorgroups'] = 'Benutzer Gruppen die Beiträge und Kommentare moderieren können: ';
 $txt['PmxBlog_moderate_link'] = 'Moderation';
 
-$txt['PmxBlog_contentlen'] = 'Länge des Intros (Teaser) in Worten: ';
 $txt['PmxBlog_overviewpages'] = 'Anzahl der Blogs bei Übersicht: ';
 $txt['PmxBlog_contentpages'] = 'Anzahl der Beiträge bei Übersicht: ';
 $txt['PmxBlog_commentpages'] = 'Anzahl der Kommentare auf einer Seite: ';
 $txt['PmxBlog_removelinks'] = 'Verstecke externe Links: ';
 $txt['PmxBlog_removeimages'] = 'Verstecke externe Bilder: ';
 $txt['PmxBlog_image_prefix'] = 'Zugriff auf Bilder die im Html-Editor hochgeladen werden für <b>alle</b> Benutzer:';
+$txt['PmxBlog_contentlen'] = array(
+	0 => 'Länge des Intros (Teaser) in Worten: ',
+	1 => 'Länge des Intros (Teaser) in Zeichen: ',
+);
+$txt['PmxBlog_teasershort'] = array(
+	0 => '&nbsp;[... %s/%s]',
+	1 => '&nbsp;[... %s/%s]',
+);
+$txt['PmxBlog_teaserinfo'] = array(
+	0 => 'Inhalts Kürzung: %s von %s Worten',
+	1 => 'Inhalts Kürzung: %s von %s Zeichen',
+);
 
 $txt['PmxBlog_htmltags'] = 'Html Token die für den BBC Editor konvertiert werden:';
 $txt['PmxBlog_htmltags_help'] = 'Beachten Sie, das alle andern Html Token entfernt werden, wenn der Inhalt in den BBC Editor geladen wird!';

@@ -46,13 +46,24 @@ $txt['PmxBlog_usewysiwygcmt'] = 'Member groups which can use the Html-editor for
 $txt['PmxBlog_moderatorgroups'] = 'Member groups which can moderate content and comments: ';
 $txt['PmxBlog_moderate_link'] = 'moderation';
 
-$txt['PmxBlog_contentlen'] = 'Length of article teaser in words: ';
 $txt['PmxBlog_overviewpages'] = 'Number of Blogs on overview: ';
 $txt['PmxBlog_contentpages'] = 'Number of Articles on overview: ';
 $txt['PmxBlog_commentpages'] = 'Number of Comments on single page: ';
 $txt['PmxBlog_removelinks'] = 'Hide external links: ';
 $txt['PmxBlog_removeimages'] = 'Hide external images: ';
 $txt['PmxBlog_image_prefix'] = 'Share images uploads through the Html-editor to <b>all</b> member:';
+$txt['PmxBlog_contentlen'] = array(
+	0 => 'Length of article teaser (words): ',
+	1 => 'Length of article teaser (character): ',
+);
+$txt['PmxBlog_teasershort'] = array(
+	0 => '&nbsp;[... %s/%s]',
+	1 => '&nbsp;[... %s/%s]',
+);
+$txt['PmxBlog_teaserinfo'] = array(
+	0 => 'Content reduction: %s of %s Words',
+	1 => 'Content reduction: %s of %s Character',
+);
 
 $txt['PmxBlog_htmltags'] = 'Html tags they are converted for the BBC editor:';
 $txt['PmxBlog_htmltags_help'] = 'Note that all other html tags are removed, if the content loaded in the BBC editor!';

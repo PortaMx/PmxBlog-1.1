@@ -56,6 +56,18 @@ $txt['PmxBlog_image_prefix'] = 'Zugriff auf Bilder die im Html-Editor hochgelade
 $txt['PmxBlog_htmltags'] = 'Html Token die f&uuml;r den BBC Editor konvertiert werden:';
 $txt['PmxBlog_htmltags_help'] = 'Beachten Sie, das alle andern Html Token entfernt werden, wenn der Inhalt in den BBC Editor geladen wird!';
 $txt['PmxBlog_checkbox_help'] = '<span class="smalltext" style="vertical-align:2px;">Markiert=Ja, Nicht Markiert=Nein</span>';
+$txt['PmxBlog_contentlen'] = array(
+	0 => 'L&auml;nge des Intros (Teaser) in Worten: ',
+	1 => 'L&auml;nge des Intros (Teaser) in Zeichen: ',
+);
+$txt['PmxBlog_teasershort'] = array(
+	0 => '&nbsp;[... %s/%s]',
+	1 => '&nbsp;[... %s/%s]',
+);
+$txt['PmxBlog_teaserinfo'] = array(
+	0 => 'Inhalts K&uuml;rzung: %s von %s Worten',
+	1 => 'Inhalts K&uuml;rzung: %s von %s Zeichen',
+);
 
 $txt['PmxBlog_content_editor'] = 'Editor f&uuml;r Beitr&auml;ge w&auml;hlen: ';
 $txt['PmxBlog_comment_editor'] = 'Editor f&uuml;r Kommentare w&auml;hlen: ';
