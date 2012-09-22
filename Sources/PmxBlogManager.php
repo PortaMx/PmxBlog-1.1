@@ -1343,8 +1343,10 @@ function PmxBlogManager($mode, $pagelist)
 		else
 		// Content overview
 		{
+log_error('start overview');
 			$cID = 0;
 			$contcat = array();
+			require_once($sourcedir .'/PmxBlogTeaser.php');
 
 			// Content from categorie ?
 			if(isset($_GET['ca']) && is_numeric($_GET['ca']))
@@ -1378,39 +1380,36 @@ function PmxBlogManager($mode, $pagelist)
 				)
 			);
 
-			if($smcFunc['db_num_rows']($request) > 0)
+			while($row = $smcFunc['db_fetch_assoc']($request))
 			{
-				while($row = $smcFunc['db_fetch_assoc']($request))
-				{
-					$context['PmxBlog']['content'][] = array(
-						'id' => $row['ID'],
-						'userid' => $row['owner'],
-						'categorie' => $row['categorie'],
-						'nbr_comment' => $row['nbr_comment'],
-						'allowcomment' => array($row['allowcomment'], allowed_BlogCont($row['allowcomment'], explode(',', $row['buddy_list']), $row['owner'])),
-						'date_created' => timeformat($row['date_created'], true),
-						'date_edit' => timeformat($row['date_lastedit'], true),
-						'views' => $row['views'],
-						'rating' => getRating($row['rating']),
-						'votes' => count(preg_split('/,/', $row['voter'], -1, PREG_SPLIT_NO_EMPTY)),
-						'hasvoted' => in_array($user_info['id'], preg_split('/,/', $row['voter'], -1, PREG_SPLIT_NO_EMPTY)),
-						'is_edit' => ($row['date_lastedit'] > $row['date_created'] + $context['PmxBlog']['editholdtime']),
-						'subject' => (empty($row['subject']) ? 'untitled' : ($context['PmxBlog']['censor_text'] == 1 ? censorText(stripslashes($row['subject'])) : stripslashes($row['subject']))),
-						'body' => Post_Teaser($row['body']),
-						'allow' => $row['allow_view'],
-						'published' => $row['published'],
-						'singlepage' => false,
-						'is_new_cont' => !Is_Read($uid, $context['PmxBlog']['Manager']['is_read'], $row['ID']),
-						'is_new_cmnt' => !$user_info['is_guest'] && isset($context['PmxBlog']['cmnt_log'][$row['ID']]['cmtHigh']) && $context['PmxBlog']['cmnt_log'][$row['ID']]['cmtHigh'] > $context['PmxBlog']['cmnt_log'][$row['ID']]['cmtID']
-					);
+				$context['PmxBlog']['content'][] = array(
+					'id' => $row['ID'],
+					'userid' => $row['owner'],
+					'categorie' => $row['categorie'],
+					'nbr_comment' => $row['nbr_comment'],
+					'allowcomment' => array($row['allowcomment'], allowed_BlogCont($row['allowcomment'], explode(',', $row['buddy_list']), $row['owner'])),
+					'date_created' => timeformat($row['date_created'], true),
+					'date_edit' => timeformat($row['date_lastedit'], true),
+					'views' => $row['views'],
+					'rating' => getRating($row['rating']),
+					'votes' => count(preg_split('/,/', $row['voter'], -1, PREG_SPLIT_NO_EMPTY)),
+					'hasvoted' => in_array($user_info['id'], preg_split('/,/', $row['voter'], -1, PREG_SPLIT_NO_EMPTY)),
+					'is_edit' => ($row['date_lastedit'] > $row['date_created'] + $context['PmxBlog']['editholdtime']),
+					'subject' => (empty($row['subject']) ? 'untitled' : ($context['PmxBlog']['censor_text'] == 1 ? censorText(stripslashes($row['subject'])) : stripslashes($row['subject']))),
+					'body' => PmxBlogTeaser($row['body']),
+					'allow' => $row['allow_view'],
+					'published' => $row['published'],
+					'singlepage' => false,
+					'is_new_cont' => !Is_Read($uid, $context['PmxBlog']['Manager']['is_read'], $row['ID']),
+					'is_new_cmnt' => !$user_info['is_guest'] && isset($context['PmxBlog']['cmnt_log'][$row['ID']]['cmtHigh']) && $context['PmxBlog']['cmnt_log'][$row['ID']]['cmtHigh'] > $context['PmxBlog']['cmnt_log'][$row['ID']]['cmtID']
+				);
 
-					$contcat[] = $row['categorie'];
-					$d = getdate($row['date_created']);
-					$context['PmxBlog']['arch'][$d['year']][$d['mon']] = 1;
-					$context['PmxBlog']['cal'][$d['year']][$d['mon']][$d['mday']] = 1;
-				}
-				$smcFunc['db_free_result']($request);
+				$contcat[] = $row['categorie'];
+				$d = getdate($row['date_created']);
+				$context['PmxBlog']['arch'][$d['year']][$d['mon']] = 1;
+				$context['PmxBlog']['cal'][$d['year']][$d['mon']][$d['mday']] = 1;
 			}
+			$smcFunc['db_free_result']($request);
 
 			// mask out categories without content
 			foreach($context['PmxBlog']['categorie'] as $key => $val)
@@ -1446,6 +1445,8 @@ function PmxBlogManager($mode, $pagelist)
 							count($context['PmxBlog']['content']),
 							$context['PmxBlog']['content_pages']));
 		}
+
+		// load the template .. done
 		loadTemplate('PmxBlog');
 	}
 }
