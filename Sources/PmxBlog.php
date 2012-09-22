@@ -56,7 +56,7 @@ function PmxBlog_init($CalledFrom = '')
 		setcookie('PmxBlogImgcfg', '0', time() - 1000, '/');
 
 	// load all settings
-	if(($temp = cache_get_data('PmxBlogSettings', 10)) && $temp !== null)
+	if(($temp = cache_get_data('PmxBlogSettings', 10)) !== null)
 	{
 		list(
 			$context['PmxBlog']['wysiwyg_edit'],
@@ -107,9 +107,7 @@ function PmxBlog_init($CalledFrom = '')
 						$context['PmxBlog']['remove_images'],
 						$context['PmxBlog']['image_prefix']) = explode(',', $row['value']);
 				elseif($row['name'] == 'blog_acs')
-					list($blog_acs,
-						$blog_rd_acs,
-						$blog_wr_acs) = explode(':', $row['value']);
+					list($blog_acs, $blog_rd_acs, $blog_wr_acs) = explode(':', $row['value']);
 				elseif($row['name'] == 'wysiwyg_edit')
 					$context['PmxBlog']['wysiwyg_edit'] = unserialize($row['value']);
 				elseif($row['name'] == 'wysiwyg_comment')
@@ -175,7 +173,7 @@ function PmxBlog_init($CalledFrom = '')
 	}
 
 	// get total enabled Blogs and there entries
-	if(($temp = cache_get_data('PmxBlogTotals', 10)) && $temp !== null && isset($temp[$user_info['id']]))
+	if(($temp = cache_get_data('PmxBlogTotals', 10)) !== null && isset($temp[$user_info['id']]))
 	{
 		list(
 			$context['PmxBlog']['total_blogs'],
@@ -244,31 +242,6 @@ function PmxBlog_init($CalledFrom = '')
 		setcookie('PmxBlogSmileys', 0);
 }
 
-/**
-* get domain and path for cookies
-*/
-function pmx_getcookparts()
-{
-	global $boardurl, $modSettings;
-
-	$url = pmx_parse_url($boardurl);
-
-	// local cookie?
-	if(empty($url['path']) || empty($modSettings['localCookies']))
-		$url['path'] = '';
-	$url['path'] .= '/';
-
-	// global cookie?
-	if(!empty($modSettings['globalCookies']) && preg_match('~^\d{1,3}(\.\d{1,3}){3}$~', $url['host']) == 0 && preg_match('~(?:[^\.]+\.)?([^\.]{2,}\..+)\z~i', $url['host'], $parts) == 1)
-		$url['host'] = '.'. $parts[1];
-	elseif(empty($modSettings['localCookies']) && empty($modSettings['globalCookies']))
-		$url['host'] = '';
-	elseif(!isset($url['host']) || strpos($url['host'], '.') === false)
-		$url['host'] = '';
-
-	return $url;
-}
-
 function PmxBlog()
 {
 	global $context, $sourcedir, $txt, $scripturl, $settings, $modSettings, $options, $user_info, $smcFunc;
@@ -290,7 +263,6 @@ function PmxBlog()
 		$context['html_headers'] .= '
 	<link rel="stylesheet" type="text/css" href="'. $settings['theme_url']. '/pmxblog_core.css" />';
 
-	$parts = pmx_getcookparts();
 	$context['html_headers'] .= '
 	<link rel="stylesheet" type="text/css" href="'. $settings['default_theme_url']. '/PmxBlog.css" />
 	<script type="text/javascript"><!-- // --><![CDATA[
@@ -389,8 +361,8 @@ function PmxBlog()
 		if(isset($_GET['mod']))
 		{
 			$_SESSION['PmxBlogModerate'] = (empty($_GET['mod']) ? 0 : base64_encode($user_info['id'] .'.'. $context['PmxBlog']['UID']));
-      unset($_GET['mod']);
-      redirectexit(http_build_query($_GET, '', ';'));
+			unset($_GET['mod']);
+			redirectexit(http_build_query($_GET, '', ';'));
 		}
 		elseif(isset($_SESSION['PmxBlogModerate']) && !empty($_SESSION['PmxBlogModerate']))
 		{
@@ -500,7 +472,7 @@ function PmxBlog()
 				'title' => $txt['PmxBlog_set_newblog_nav'],
 				'href' => $scripturl . '?action=pmxblog;sa=manager;setup',
 				'image' => $settings['default_images_url'] .'/PmxBlog/blogico2.gif',
-				'is_selected' => $context['PmxBlog']['subact'] == 'manager' && isset($_GET['set']),
+				'is_selected' => $context['PmxBlog']['subact'] == 'manager',
 				'is_enabled' => AllowedToBlog('manager', $user_info['id']) && empty($context['PmxBlog']['blogexist']),
 			),
 			'blogadmin' => array(
@@ -528,11 +500,7 @@ function PmxBlog()
 		else
 			$pageinfo = '0.0.0.';
 
-		list($pagelist['blogpage'],
-			$pagelist['contpage'],
-			$pagelist['cmntpage'],
-			$pagelist['lastaction']) = explode('.', $pageinfo);
-
+		list($pagelist['blogpage'], $pagelist['contpage'], $pagelist['cmntpage'], $pagelist['lastaction']) = explode('.', $pageinfo);
 		$page = null;
 		if(isset($_GET['pg']))
 			$page = $_GET['pg'];
@@ -552,8 +520,7 @@ function PmxBlog()
 			default:
 				$pagelist['cmntpage'] = 0;
 				$pagelist['contpage'] = 0;
-				if(in_array($context['PmxBlog']['subact'], array('tracked', 'unread', 'view'))
-					&& $pagelist['lastaction'] != $context['PmxBlog']['subact'])
+				if(in_array($context['PmxBlog']['subact'], array('tracked', 'unread', 'view')) && $pagelist['lastaction'] != $context['PmxBlog']['subact'])
 					$pagelist['blogpage'] = 0;
 				else
 					$pagelist['blogpage'] = isset($page) ? $page : $pagelist['blogpage'];
@@ -2118,7 +2085,7 @@ function checkMemberBlog($memid)
 	if(empty($modSettings['pmxblog_enabled']))
 		return false;
 
-	if(($temp = cache_get_data('PmxBlogTotals', 10)) && $temp !== null && isset($temp[$memid]))
+	if(($temp = cache_get_data('PmxBlogTotals', 10)) !== null && isset($temp[$memid]))
 	{
 		list(
 			$blogexist,
