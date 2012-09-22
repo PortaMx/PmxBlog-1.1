@@ -1343,7 +1343,6 @@ function PmxBlogManager($mode, $pagelist)
 		else
 		// Content overview
 		{
-log_error('start overview');
 			$cID = 0;
 			$contcat = array();
 			require_once($sourcedir .'/PmxBlogTeaser.php');

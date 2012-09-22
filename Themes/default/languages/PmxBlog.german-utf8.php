@@ -51,13 +51,10 @@ $txt['PmxBlog_commentpages'] = 'Anzahl der Kommentare auf einer Seite: ';
 $txt['PmxBlog_removelinks'] = 'Verstecke externe Links: ';
 $txt['PmxBlog_removeimages'] = 'Verstecke externe Bilder: ';
 $txt['PmxBlog_image_prefix'] = 'Zugriff auf Bilder die im Html-Editor hochgeladen werden für <b>alle</b> Benutzer:';
+$txt['PmxBlog_teasershort'] = '&nbsp;[... %s/%s]';
 $txt['PmxBlog_contentlen'] = array(
 	0 => 'Länge des Intros (Teaser) in Worten: ',
 	1 => 'Länge des Intros (Teaser) in Zeichen: ',
-);
-$txt['PmxBlog_teasershort'] = array(
-	0 => '&nbsp;[... %s/%s]',
-	1 => '&nbsp;[... %s/%s]',
 );
 $txt['PmxBlog_teaserinfo'] = array(
 	0 => 'Inhalts Kürzung: %s von %s Worten',

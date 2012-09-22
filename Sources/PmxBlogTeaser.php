@@ -3,17 +3,15 @@
 // -- PmxBlogTeaser.php                                    --
 // ----------------------------------------------------------
 // -- Version: 1.1 for SMF 2.0                             --
-// -- Copyright 2006..2008 by: "Feline"                    --
-// -- Copyright 2009-2012 by: PortaMx corp.                --
+// -- Copyright 2012 by: PortaMx corp.                     --
 // -- Support and Updates at: http://portamx.com           --
 // ----------------------------------------------------------
 
 if (!defined('SMF'))
 	die('Hacking attempt...');
 
-/**
-* Post teaser (shorten articles by given wordcount).
-*/
+
+// Post teaser (shorten articles by given wordcount).
 function PmxBlogTeaser($content)
 {
 	global $context, $settings, $user_info, $txt, $smcFunc, $modSettings, $boarddir, $boardurl;
@@ -51,7 +49,7 @@ function PmxBlogTeaser($content)
 	if(!empty($teased))
 	{
 		// insert teaser mark [...]
-		$content .= '<span class="smalltext pmxblog_teaser" title="'. sprintf($txt['PmxBlog_teaserinfo'][$TeaseMode], $context['PmxBlog']['is_teased'], $contentlen) .'"> '. sprintf($txt['PmxBlog_teasershort'][$TeaseMode], $context['PmxBlog']['is_teased'], $contentlen) .'</span>';
+		$content .= '<span class="smalltext pmxblog_teaser" title="'. sprintf($txt['PmxBlog_teaserinfo'][$TeaseMode], $context['PmxBlog']['is_teased'], $contentlen) .'"> '. sprintf($txt['PmxBlog_teasershort'], $context['PmxBlog']['is_teased'], $contentlen) .'</span>';
 
 		// find not closed tags
 		preg_match_all('~<(\w+)[^>]*>~s', $content, $open);

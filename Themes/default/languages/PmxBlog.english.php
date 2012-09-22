@@ -52,13 +52,10 @@ $txt['PmxBlog_commentpages'] = 'Number of Comments on single page: ';
 $txt['PmxBlog_removelinks'] = 'Hide external links: ';
 $txt['PmxBlog_removeimages'] = 'Hide external images: ';
 $txt['PmxBlog_image_prefix'] = 'Share images uploads through the Html-editor to <b>all</b> member:';
+$txt['PmxBlog_teasershort'] = '&nbsp;[... %s/%s]';
 $txt['PmxBlog_contentlen'] = array(
 	0 => 'Length of article teaser (words): ',
 	1 => 'Length of article teaser (character): ',
-);
-$txt['PmxBlog_teasershort'] = array(
-	0 => '&nbsp;[... %s/%s]',
-	1 => '&nbsp;[... %s/%s]',
 );
 $txt['PmxBlog_teaserinfo'] = array(
 	0 => 'Content reduction: %s of %s Words',
