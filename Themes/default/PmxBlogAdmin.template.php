@@ -10,7 +10,7 @@
 
 function template_main()
 {
-	global $context, $settings, $scripturl, $txt;
+	global $context, $settings, $scripturl, $modSettings, $txt;
 	require_once($settings['default_theme_dir'] . '/PmxBlogMenu.php');
 
 	Navigation($context['PmxBlog']['nav_tabs']);
@@ -82,7 +82,7 @@ function template_main()
 				<tr><td align="right" style="width:45%;padding-top:10px;">
 					'. $txt['PmxBlog_censor_text'] .'
 				</td><td valign="top" style="padding-top:10px;">
-					<input type="hidden"" name="censor_text" value="0" />
+					<input type="hidden" name="censor_text" value="0" />
 					<input class="check" name="censor_text" type="checkbox" value="1"', $context['PmxBlog']['censor_text'] == 1 ? ' checked="checked"': '', ' />
 					'. $txt['PmxBlog_checkbox_help'] .'
 				</td></tr>
@@ -90,14 +90,14 @@ function template_main()
 				<tr style="margin-top:10px;"><td align="right" style="width:45%;">
 					'. $txt['PmxBlog_removelinks'].'
 				</td><td valign="top">
-					<input type="hidden"" name="remove_links" value="0" />
+					<input type="hidden" name="remove_links" value="0" />
 					<input class="check" name="remove_links" type="checkbox" value="1"', $context['PmxBlog']['remove_links'] == 1 ? ' checked="checked"': '', ' />
 					'. $txt['PmxBlog_checkbox_help'] .'
 				</td></tr>
 				<tr><td align="right" style="width:45%;">
 					'. $txt['PmxBlog_removeimages'] .'
 				</td><td valign="top">
-					<input type="hidden"" name="remove_images" value="0" />
+					<input type="hidden" name="remove_images" value="0" />
 					<input class="check" name="remove_images" type="checkbox" value="1"', $context['PmxBlog']['remove_images'] == 1 ? ' checked="checked"': '', ' />
 					'. $txt['PmxBlog_checkbox_help'] .'
 				</td></tr>
@@ -105,7 +105,7 @@ function template_main()
 				<tr style="margin-top:10px;"><td align="right" style="width:45%;padding-top:10px;">
 					'. $txt['PmxBlog_showthumnails'] .'
 				</td><td valign="top" style="padding-top:10px;">
-					<input type="hidden"" name="thumb_show" value="0" />
+					<input type="hidden" name="thumb_show" value="0" />
 					<input class="check" name="thumb_show" type="checkbox" value="1"', $context['PmxBlog']['thumb_show'] == 1 ? ' checked="checked"' : '', ' />
 					'. $txt['PmxBlog_checkbox_help'] .'
 				</td></tr>
@@ -139,7 +139,7 @@ function template_main()
 					<input style="margin-left:4px;" name="comment_pages" type="text" size="2" value="'. $context['PmxBlog']['comment_pages'] .'" />
 				</td></tr>
 				<tr><td align="right" style="width:45%;">
-					'. $txt['PmxBlog_contentlen'] .'
+					'. $txt['PmxBlog_contentlen'][intval(!empty($modSettings['PmxBlog_teasermode']))] .'
 				</td><td valign="top">
 					<input style="margin-left:4px;" name="content_len" type="text" size="2" value="'. $context['PmxBlog']['content_len'] .'" />
 				</td></tr>

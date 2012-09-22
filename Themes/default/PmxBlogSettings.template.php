@@ -60,46 +60,46 @@ function template_main()
 				<tr>
 					<td align="right" width="45%" style="padding-bottom: 5px;">'. $txt['PmxBlog_blogname'] .'</td>
 					<td width="55%" style="padding-bottom: 5px;">
-						<input name="blogname" type="text" size="42" value="'. $context['PmxBlog']['Manager']['blogname'] .'"', !isOwner() ? 'disabled="disabled"' : '', ' style="margin-left:3px;" />
+						<input name="blogname" type="text" size="42" value="'. $context['PmxBlog']['Manager']['blogname'] .'"', !isOwner() ? ' disabled="disabled"' : '', ' style="margin-left:3px;" />
 					</td>
 				</tr><tr>
 					<td align="right" width="45%">'. $txt['PmxBlog_blogdesc'] .'</td>
 					<td width="55%">
-						<input name="blogdesc" type="text" size="42" value="'. $context['PmxBlog']['Manager']['blogdesc'] .'"', !isOwner() ? 'disabled="disabled"' : '', ' style="margin-left:3px;" />
+						<input name="blogdesc" type="text" size="42" value="'. $context['PmxBlog']['Manager']['blogdesc'] .'"', !isOwner() ? ' disabled="disabled"' : '', ' style="margin-left:3px;" />
 					</td>
 				</tr><tr>
 					<td align="right" width="45%" style="padding-top:10px;">'. $txt['PmxBlog_showAvatar'] .'</td>
 					<td width="55%" style="padding-top:10px;">
 						'. (isOwner() ? '<input name="showavatar" type="hidden" value="2" />' : '') .'
-						<input class="check" name="showavatar" type="checkbox" value="1"', $context['PmxBlog']['Manager']['settings']{2} == '1' ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' />
+						<input class="check" name="showavatar" type="checkbox" value="1"', $context['PmxBlog']['Manager']['settings']{2} == '1' ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' />
 						'. $txt['PmxBlog_checkbox_help'] .'
 					</td>
 				</tr><tr>
 					<td align="right" width="45%">'. $txt['PmxBlog_showcalendar'] .'</td>
 					<td width="55%">
 						'. (isOwner() ? '<input name="showcalendar" type="hidden" value="0" />' : '') .'
-						<input class="check" name="showcalendar" type="checkbox" value="1"', $context['PmxBlog']['Manager']['showcalendar'] == 1 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' />
+						<input class="check" name="showcalendar" type="checkbox" value="1"', $context['PmxBlog']['Manager']['showcalendar'] == 1 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' />
 						'. $txt['PmxBlog_checkbox_help'] .'
 					</td>
 				</tr><tr>
 					<td align="right" width="45%">'. $txt['PmxBlog_showarchive'] .'</td>
 					<td width="55%">
 						'. (isOwner() ? '<input name="showarchive" type="hidden" value="0" />' : '') .'
-						<input class="check" name="showarchive" type="checkbox" value="1"', $context['PmxBlog']['Manager']['showarchive'] == 1 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' />
+						<input class="check" name="showarchive" type="checkbox" value="1"', $context['PmxBlog']['Manager']['showarchive'] == 1 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' />
 						'. $txt['PmxBlog_checkbox_help'] .'
 					</td>
 				</tr><tr>
 					<td align="right" width="45%">'. $txt['PmxBlog_showcategories'] .'</td>
 					<td width="55%">
 						'. (isOwner() ? '<input name="showcategories" type="hidden" value="0" />' : '') .'
-						<input class="check" name="showcategories" type="checkbox" value="1"', $context['PmxBlog']['Manager']['showcategories'] == 1 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' />
+						<input class="check" name="showcategories" type="checkbox" value="1"', $context['PmxBlog']['Manager']['showcategories'] == 1 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' />
 						'. $txt['PmxBlog_checkbox_help'] .'
 					</td>
 				</tr><tr>
 					<td align="right" width="45%">'. $txt['PmxBlog_hide_on_edit'] .'</td>
 					<td width="55%">
 						'. (isOwner() ? '<input name="hidebaronedit" type="hidden" value="0" />' : '') .'
-						<input class="check" name="hidebaronedit" type="checkbox" value="1"', $context['PmxBlog']['Manager']['hidebaronedit'] == 1 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' />
+						<input class="check" name="hidebaronedit" type="checkbox" value="1"', $context['PmxBlog']['Manager']['hidebaronedit'] == 1 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' />
 						'. $txt['PmxBlog_checkbox_help'] .'
 					</td>';
 
@@ -108,8 +108,8 @@ function template_main()
 				</tr><tr>
 					<td align="right" width="45%" valign="top" style="padding-top:10px;">'. $txt['PmxBlog_content_editor'] .'</td>
 					<td width="55%" valign="top" style="padding-top:10px;">
-						<input class="check" name="contenteditor" type="radio" value="1"', $context['PmxBlog']['Manager']['settings']{0} == '1' ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'. $txt['PmxBlog_editor_html'] .'</span><br />
-						<input class="check" name="contenteditor" type="radio" value="2"', $context['PmxBlog']['Manager']['settings']{0} == '2' ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'. $txt['PmxBlog_editor_bbc'] .'</span>
+						<input class="check" name="contenteditor" type="radio" value="1"', $context['PmxBlog']['Manager']['settings']{0} == '1' ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'. $txt['PmxBlog_editor_html'] .'</span><br />
+						<input class="check" name="contenteditor" type="radio" value="2"', $context['PmxBlog']['Manager']['settings']{0} == '2' ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'. $txt['PmxBlog_editor_bbc'] .'</span>
 					</td>';
 
 			if(getEditorAcs($context['PmxBlog']['wysiwyg_comment']))
@@ -117,8 +117,8 @@ function template_main()
 				</tr><tr>
 					<td align="right" width="45%" valign="top" style="padding-top:10px;">'. $txt['PmxBlog_comment_editor'] .'</td>
 					<td width="55%" valign="top" style="padding-top:10px;">
-						<input class="check" name="commenteditor" type="radio" value="1"', $context['PmxBlog']['Manager']['settings']{1} == '1' ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'. $txt['PmxBlog_editor_html'] .'</span><br />
-						<input class="check" name="commenteditor" type="radio" value="2"', $context['PmxBlog']['Manager']['settings']{1} == '2' ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'. $txt['PmxBlog_editor_bbc'] .'</span>
+						<input class="check" name="commenteditor" type="radio" value="1"', $context['PmxBlog']['Manager']['settings']{1} == '1' ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'. $txt['PmxBlog_editor_html'] .'</span><br />
+						<input class="check" name="commenteditor" type="radio" value="2"', $context['PmxBlog']['Manager']['settings']{1} == '2' ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'. $txt['PmxBlog_editor_bbc'] .'</span>
 					</td>';
 
 			echo '
@@ -142,16 +142,16 @@ function template_main()
 				</tr><tr>
 					<td align="right" valign="top" width="45%" style="padding-top:10px;">'. $txt['PmxBlog_tracknotify'] .'</td>
 					<td width="55%" style="padding-top:10px;">
-						<input class="check" name="tracking" type="radio" value="0:'.$trData.'"', $trMode[1] == 0 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_off'].'</span><br />
-						<input class="check" name="tracking" type="radio" value="1:'.$trData.'"', $trMode[1] == 1 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_email'].'</span><br />
-						<input class="check" name="tracking" type="radio" value="2:'.$trData.'"', $trMode[1] == 2 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_pm'].'</span>
+						<input class="check" name="tracking" type="radio" value="0:'.$trData.'"', $trMode[1] == 0 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_off'].'</span><br />
+						<input class="check" name="tracking" type="radio" value="1:'.$trData.'"', $trMode[1] == 1 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_email'].'</span><br />
+						<input class="check" name="tracking" type="radio" value="2:'.$trData.'"', $trMode[1] == 2 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_pm'].'</span>
 					</td>
 				</tr><tr>
 					<td align="right" valign="top" width="45%" style="padding-top:5px;">'. $txt['PmxBlog_trackself'] .'</td>
 					<td width="55%" style="padding-top:5px;">
-						<input class="check" name="trackself" type="radio" value="0"', $trMode[0] == 0 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_off'].'</span><br />
-						<input class="check" name="trackself" type="radio" value="1"', $trMode[0] == 1 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_email'].'</span><br />
-						<input class="check" name="trackself" type="radio" value="2"', $trMode[0] == 2 ? ' checked="checked"': '', !isOwner() ? 'disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_pm'].'</span>
+						<input class="check" name="trackself" type="radio" value="0"', $trMode[0] == 0 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_off'].'</span><br />
+						<input class="check" name="trackself" type="radio" value="1"', $trMode[0] == 1 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_email'].'</span><br />
+						<input class="check" name="trackself" type="radio" value="2"', $trMode[0] == 2 ? ' checked="checked"': '', !isOwner() ? ' disabled="disabled"' : '', ' /> <span style="vertical-align:3px;">'.$txt['PmxBlog_tracknotify_pm'].'</span>
 					</td>
 				</tr>
 				<tr>
@@ -210,15 +210,17 @@ function template_main()
 				// ]]></script>';
 			}
 			echo '
-			<div class="title_bar"><h3 class="titlebg">
-				<div class="smalltext" style="float:left; width:205px;">'. $txt['PmxBlog_short_action'] .'</div>
-				<div class="smalltext" style="float:left;">'. $txt['PmxBlog_categorie_title'] .'</div>
-				'.(isOwner() && !isBlogLocked()
-				?	'<div class="smalltext" style="float:right; white-space:nowrap;">
+			<div class="title_bar">
+				<h3 class="titlebg">
+					<span class="smalltext" style="display:block;float:left; width:205px;">'. $txt['PmxBlog_short_action'] .'</span>
+					<span class="smalltext" style="display:block;float:left;">'. $txt['PmxBlog_categorie_title'] .'</span>
+					'.(isOwner() && !isBlogLocked()
+					?	'<span class="smalltext" style="display:block;float:right; white-space:nowrap;">
 						<span id="AddCat" style="cursor:pointer;" onclick="NewCategorie()">'. $txt['PmxBlog_newcat'] .'</span>
-					</div>'
+						</span>'
 				: '') .'
-			</h3></div>
+				</h3>
+			</div>
 
 			<div class="windowbg2 pmxblog_core pmx_roundcore">
 			<span class="topslice"><span></span></span>
@@ -316,11 +318,11 @@ function template_main()
 			<div id="SaveButton" style="display:none;margin-top:2px;">
 				<form id="pmx_form" name="PmxBlog_CatED" action="'.$scripturl.'?action=pmxblog;sa=manager;setup=cat;upd'.$context['PmxBlog']['UserLink']. $cameFrom .'" method="post">
 					<div style="display:none">
-						<select id="pmxblog_cat_id" name="id[]" multiple="multiple"></select>
-						<select id="pmxblog_cat_name" name="name[]" multiple="multiple"></select>
-						<select id="pmxblog_cat_corder" name="corder[]" multiple="multiple"></select>
-						<select id="pmxblog_cat_depth" name="depth[]" multiple="multiple"></select>
-						<select id="pmxblog_cat_chgtype" name="chgtype[]" multiple="multiple"></select>
+						<select id="pmxblog_cat_id" name="id[]" multiple="multiple"> </select>
+						<select id="pmxblog_cat_name" name="name[]" multiple="multiple"> </select>
+						<select id="pmxblog_cat_corder" name="corder[]" multiple="multiple"> </select>
+						<select id="pmxblog_cat_depth" name="depth[]" multiple="multiple"> </select>
+						<select id="pmxblog_cat_chgtype" name="chgtype[]" multiple="multiple"> </select>
 					</div>
 				</form>
 				<div style="margin:0 auto; text-align:center;">
@@ -344,7 +346,7 @@ function template_main()
 		elseif($curact == 'removeblog')
 		{
 			echo '
-			<div class="title_bar"><h3 class="titlebg" text-align:center;">
+			<div class="title_bar"><h3 class="titlebg" style="text-align:center;">
 				'. $txt['PmxBlog_remove_title'] .'
 			</h3></div>
 			<form id="pmx_form" name="PmxBlogManager_BlogDelete" action="' . $scripturl . '?action=pmxblog;sa=manager;setup=remove'.$context['PmxBlog']['UserLink'].'" method="post" style="margin: 0px;">

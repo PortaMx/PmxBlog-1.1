@@ -43,6 +43,11 @@
 	clear: both;
 	color: inherit !important;
 }
+.pmxblog_teaser:hover
+{
+	font-weight: bold;
+	cursor: help;
+}
 /* page index */
 .pmxblog_pageidx
 {
