@@ -25,9 +25,9 @@ function PmxBlogTeaser($content)
 		censorText($content);
 
 	$wordcount = $context['PmxBlog']['content_len'];
-	$PmxBlogTeaseCount = (empty($modSettings['PmxBlog_teasermode']) ? 'PmxBlog_teasecountwords' : 'PmxBlog_teasecountchars');
-	$PmxBlogTeaseShorten = (empty($modSettings['PmxBlog_teasermode']) ? 'PmxBlog_teasegetwords' : 'PmxBlog_teasegetchars');
-	$TeaseMode = intval(!empty($modSettings['PmxBlog_teasermode']));
+	$PmxBlogTeaseCount = (empty($modSettings['pmxblog_teasermode']) ? 'PmxBlog_teasecountwords' : 'PmxBlog_teasecountchars');
+	$PmxBlogTeaseShorten = (empty($modSettings['pmxblog_teasermode']) ? 'PmxBlog_teasegetwords' : 'PmxBlog_teasegetchars');
+	$TeaseMode = intval(!empty($modSettings['pmxblog_teasermode']));
 	$content = str_replace(array("\n", "\t", "\r"), '', $content);
 	$contentlen = $PmxBlogTeaseCount($content);
 	$teased = false;
@@ -49,7 +49,7 @@ function PmxBlogTeaser($content)
 	if(!empty($teased))
 	{
 		// insert teaser mark [...]
-		$content .= '<span class="smalltext pmxblog_teaser" title="'. sprintf($txt['PmxBlog_teaserinfo'][$TeaseMode], $context['PmxBlog']['is_teased'], $contentlen) .'"> '. sprintf($txt['PmxBlog_teasershort'], $context['PmxBlog']['is_teased'], $contentlen) .'</span>';
+		$content .= '<span class="smalltext pmxblog_teaser" title="'. sprintf($txt['PmxBlog_teaserinfo'][$TeaseMode], $context['PmxBlog']['is_teased'], $contentlen) .'"> '. $txt['PmxBlog_teasershort'] .'</span>';
 
 		// find not closed tags
 		preg_match_all('~<(\w+)[^>]*>~s', $content, $open);
