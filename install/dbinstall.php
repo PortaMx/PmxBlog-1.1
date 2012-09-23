@@ -157,7 +157,6 @@ $tabledate = array(
 			array('name' => 'views', 'type' => 'int', 'default' => '0', 'null' => false),
 			array('name' => 'subject', 'type' => 'tinytext', 'null' => false),
 			array('name' => 'body', 'type' => 'text', 'null' => false),
-			array('name' => 'depth', 'type' => 'smallint', 'default' => '0', 'null' => false),
 		),
 		// index defs
 		array(
@@ -231,6 +230,91 @@ $tabledate = array(
 	),
 );
 
+$tableInserts = array(
+	'pmxblog_settings' => array(
+		'ID' => 'int',
+		'name' => 'string',
+		'value' => 'string',
+	),
+
+	'pmxblog_manager' => array(
+		'owner' => 'int',
+		'blogname' => 'string',
+		'blogdesc' => 'string',
+		'showarchive' => 'int',
+		'showcategories' => 'int',
+		'showcalendar' => 'int',
+		'blogcreated' => 'int',
+		'hidebaronedit' => 'int',
+		'blogenabled' => 'int',
+		'bloglocked' => 'int',
+		'tracking' => 'string',
+		'blograting' => 'float',
+		'blogvotes' => 'int',
+		'settings' => 'string',
+		'userpicture' => 'string'
+	),
+
+	'pmxblog_ratings' => array(
+		'owner' => 'int',
+		'contID' => 'int',
+		'rating' => 'string',
+		'voter' => 'string',
+	),
+
+	'pmxblog_categories' => array(
+		'ID' => 'int',
+		'owner' => 'int',
+		'name' => 'string',
+		'corder' => 'int',
+		'depth' => 'int',
+	),
+
+	'pmxblog_content' => array(
+		'ID' => 'int',
+		'owner' => 'int',
+		'ip_address' => 'string',
+		'categorie' => 'int',
+		'nbr_comment' => 'int',
+		'allowcomment' => 'int',
+		'allow_view' => 'int',
+		'date_created' => 'int',
+		'date_lastedit' => 'int',
+		'published' => 'int',
+		'notify' => 'int',
+		'views' => 'int',
+		'subject' => 'string',
+		'body' => 'string',
+	),
+
+	'pmxblog_comments' => array(
+		'ID' => 'int',
+		'author' => 'int',
+		'username' => 'string',
+		'ip_address' => 'string',
+		'contID' => 'int',
+		'parent' => 'int',
+		'treelevel' => 'int',
+		'treeS2' => 'int',
+		'date_created' => 'int',
+		'date_lastedit' => 'int',
+		'subject' => 'string',
+		'body' => 'string',
+	),
+
+	'pmxblog_cmnt_log' => array(
+		'userID' => 'int',
+		'contID' => 'int',
+		'cmtID' => 'int',
+	),
+
+	'pmxblog_cont_log' => array(
+		'owner' => 'int',
+		'userID' => 'int',
+		'is_read' => 'string',
+	),
+);
+
 // prepare data
 $Version = 'v1.1';
 $cpy = '<a href="http://portamx.com/license" target="_blank">PmxBlog '.$Version.' &copy; 2008-2012</a>, <a href="http://portamx.com/" target="_blank">PortaMx corp.</a>';
@@ -286,6 +370,13 @@ foreach($tabledate as $tblname => $tbldef)
 
 	if(!empty($drop))
 	{
+		// table exist ?
+		if(!empty($exist))
+		{
+			$TblUpdate = null;
+			$TblUpdate = getTableData($tblname, $tableInserts[$tblname]);
+		}
+
 		// drop table
 		$smcFunc['db_drop_table']('{db_prefix}'. $tblname);
 		$exist = false;
@@ -300,48 +391,63 @@ foreach($tabledate as $tblname => $tbldef)
 		$smcFunc['db_create_table']('{db_prefix}'. $tblname, $cols, $index, $params, 'error');
 		_dbinst_write('.. Table successful created.<br />');
 
-		if($tblname == 'pmxblog_settings')
+		if(!empty($TblUpdate))
 		{
-			// load the settings table
-			foreach($settings_data as $name => $value)
+			foreach($TblUpdate as $id => $value)
 			{
-				$smcFunc['db_insert']('', '
-					{db_prefix}pmxblog_settings',
-					array(
-						'name' => 'string',
-						'value' => 'string'
-					),
-					array(
-						$name,
-						$value
-					),
-					array('ID')
-				);
+        $x=1;
+				$smcFunc['db_insert']('replace', '
+					{db_prefix}'. $tblname,
+						$value['coldef'],
+						$value['values'],
+						array()
+					);
 			}
-			_dbinst_write('.. Table successful initiated.<br />');
-		}
-	}
-	else
-	{
-		if($tblname == 'pmxblog_settings')
-		{
-			// update the settings table
-			foreach($settings_upddata as $name => $value)
+			unset($TblUpdate);
+
+			if($tblname == 'pmxblog_settings')
 			{
-				$smcFunc['db_insert']('', '
-					{db_prefix}pmxblog_settings',
-					array(
-						'name' => 'string',
-						'value' => 'string'
-					),
-					array(
-						$name,
-						$value
-					),
-					array('ID')
-				);
+				// update the settings table
+				foreach($settings_upddata as $name => $value)
+				{
+					$smcFunc['db_insert']('', '
+						{db_prefix}pmxblog_settings',
+						array(
+							'name' => 'string',
+							'value' => 'string'
+						),
+						array(
+							$name,
+							$value
+						),
+						array('ID')
+					);
+				}
 			}
 			_dbinst_write('.. Table successful updated.<br />');
+		}
+		else
+		{
+			if($tblname == 'pmxblog_settings')
+			{
+				// load the settings table
+				foreach($settings_data as $name => $value)
+				{
+					$smcFunc['db_insert']('', '
+						{db_prefix}pmxblog_settings',
+						array(
+							'name' => 'string',
+							'value' => 'string'
+						),
+						array(
+							$name,
+							$value
+						),
+						array('ID')
+					);
+				}
+				_dbinst_write('.. Table successful initiated.<br />');
+			}
 		}
 	}
 }
@@ -437,6 +543,38 @@ if(!empty($dbinstall_string))
 
 // clear cache
 clean_cache();
+
+/***************************
+* GetTableData for convert *
+****************************/
+function getTableData($tblname, $tableDefs)
+{
+  global $smcFunc;
+
+	// read the table
+	$result = null;
+
+	$request = $smcFunc['db_query']('', '
+		SELECT *
+		FROM {db_prefix}'.$tblname,
+		array()
+	);
+
+	while($row = $smcFunc['db_fetch_assoc']($request))
+	{
+		$vals = null;
+		foreach($row as $key => $val)
+			$vals[] = $val;
+
+		$result[] = array(
+			'coldef' => $tableDefs,
+			'values' => $vals
+		);
+	}
+	$smcFunc['db_free_result']($request);
+
+	return $result;
+}
 
 /************************
 * Column check function *
