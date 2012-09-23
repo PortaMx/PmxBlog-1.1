@@ -136,7 +136,7 @@ require_once($sourcedir . '/PmxBlog.php');
   <!-- ManageSettings.php -->
   <file name="$sourcedir/ManageSettings.php">
     <operation>
-      <search position="before"><![CDATA[
+      <search position="after"><![CDATA[
 			// Big Options... polls, sticky, bbc....
 			array('select', 'pollMode', array($txt['disable_polls'], $txt['enable_polls'], $txt['polls_as_topics'])),
 		'',
@@ -144,6 +144,7 @@ require_once($sourcedir . '/PmxBlog.php');
       <add><![CDATA[
 // PmxBlog enable/disable...
 			array('check', 'pmxblog_enabled'),
+			array('check', 'pmxblog_teasermode')
 		'',
 ]]></add>
     </operation>
@@ -203,6 +204,7 @@ require_once($sourcedir . '/PmxBlog.php');
 ?>]]></search>
       <add><![CDATA[
 $txt['pmxblog_enabled'] = 'Enable PortaMx Blog';
+$txt['pmxblog_teasermode'] = 'Set PortaMx Blog teaser to character counting';
 ]]></add>
     </operation>
   </file>
@@ -214,6 +216,7 @@ $txt['pmxblog_enabled'] = 'Enable PortaMx Blog';
 ?>]]></search>
       <add><![CDATA[
 $helptxt['pmxblog_enabled'] = 'Unchecking this box will disable PmxBlog. All data in the tables, as well as the programs and templates are not changed. You can activate PmxBlog any time again.';
+$helptxt['pmxblog_teasermode'] = 'If checked, the PortaMx Blog teaser will count character instead of words';
 ]]></add>
     </operation>
   </file>
@@ -225,6 +228,7 @@ $helptxt['pmxblog_enabled'] = 'Unchecking this box will disable PmxBlog. All dat
 ?>]]></search>
       <add><![CDATA[
 $txt['pmxblog_enabled'] = 'Freigabe PortaMx Blog';
+$txt['pmxblog_teasermode'] = 'PortaMx Blog teaser auf Zeichen z&auml;hlen setzen';
 ]]></add>
     </operation>
   </file>
@@ -236,6 +240,7 @@ $txt['pmxblog_enabled'] = 'Freigabe PortaMx Blog';
 ?>]]></search>
       <add><![CDATA[
 $helptxt['pmxblog_enabled'] = 'Beim abw&auml;hlen dieser Box wird PmxBlog inaktiv. Alle Daten in den Tabellen, sowie die Programme und Templates werden nicht ver&auml;ndert. Du kannst PmxBlog jederzeit wieder aktivieren.';
+$helptxt['pmxblog_teasermode'] = 'Wenn gew&auml;hlt, z&auml;hlt der PortaMx Blog teaser Zeichen anstelle Worte';
 ?>]]></add>
     </operation>
   </file>
@@ -247,6 +252,7 @@ $helptxt['pmxblog_enabled'] = 'Beim abw&auml;hlen dieser Box wird PmxBlog inakti
 ?>]]></search>                                                                                                       >
       <add><![CDATA[
 $txt['pmxblog_enabled'] = 'Freigabe PortaMx Blog';
+$txt['pmxblog_teasermode'] = 'PortaMx Blog teaser auf Zeichen zählen setzen';
 ]]></add>
     </operation>
   </file>
@@ -258,6 +264,7 @@ $txt['pmxblog_enabled'] = 'Freigabe PortaMx Blog';
 ?>]]></search>
       <add><![CDATA[
 $helptxt['pmxblog_enabled'] = 'Beim abwählen dieser Box wird PmxBlog inaktiv. Alle Daten in den Tabellen, sowie die Programme und Templates werden nicht verändert. Du kannst PmxBlog jederzeit wieder aktivieren.';
+$helptxt['pmxblog_teasermode'] = 'Wenn gewählthlt, zählt der PortaMx Blog teaser Zeichen anstelle Worte';
 ?>]]></add>
     </operation>
   </file>
