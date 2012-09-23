@@ -144,7 +144,7 @@ require_once($sourcedir . '/PmxBlog.php');
       <add><![CDATA[
 // PmxBlog enable/disable...
 			array('check', 'pmxblog_enabled'),
-			array('check', 'pmxblog_teasermode')
+			array('check', 'pmxblog_teasermode'),
 		'',
 ]]></add>
     </operation>
