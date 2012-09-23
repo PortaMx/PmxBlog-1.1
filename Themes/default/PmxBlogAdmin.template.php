@@ -139,7 +139,7 @@ function template_main()
 					<input style="margin-left:4px;" name="comment_pages" type="text" size="2" value="'. $context['PmxBlog']['comment_pages'] .'" />
 				</td></tr>
 				<tr><td align="right" style="width:45%;">
-					'. $txt['PmxBlog_contentlen'][intval(!empty($modSettings['PmxBlog_teasermode']))] .'
+					'. $txt['PmxBlog_contentlen'][intval(!empty($modSettings['pmxblog_teasermode']))] .'
 				</td><td valign="top">
 					<input style="margin-left:4px;" name="content_len" type="text" size="2" value="'. $context['PmxBlog']['content_len'] .'" />
 				</td></tr>
