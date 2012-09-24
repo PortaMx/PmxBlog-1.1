@@ -106,7 +106,7 @@ function PmxBlogTeaser($content)
 						else
 							$path = $boarddir . $context['PmxBlog']['upload_dir'] . $context['PmxBlog']['images_dir'];
 
-						$size = getimagesize($path . $filename);
+						$size = (file_exists($path . $filename) ? getimagesize($path . $filename) : 0);
 						if(!empty($size) && $size[0] <= $thbsize[0] && $size[1] <= $thbsize[1])
 							continue;
 					}
@@ -188,10 +188,13 @@ function MakeThumbnail($sPath, $dPath, $fName, $max_width, $max_height)
 		$newfName = str_replace(' ', '_', urldecode(strrchr($fName, '/')));
 		$destName = $dPath . substr($newfName, 0, strrpos($newfName, '.')) .'_thumb_'. dechex(crc32($fName . $context['PmxBlog']['UID'])) .'.png';
 
-		@ini_set('memory_limit', '48M');
-		$sizes = getimagesize($sPath . $fName);
+		$sizes = (file_exists($sPath . $fName) ? getimagesize($sPath . $fName) : 0);
+//		@ini_set('memory_limit', '48M');
+//		$sizes = @getimagesize($sPath . $fName);
 		if(!empty($sizes))
 		{
+			@ini_set('memory_limit', '48M');
+
 			// is it one of the formats supported?
 			if(isset($default_formats[$sizes[2]]) && function_exists('imagecreatefrom' . $default_formats[$sizes[2]]))
 			{
