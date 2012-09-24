@@ -65,13 +65,11 @@ $tabledate = array(
 	'pmxblog_settings' => array(
 		// column defs
 		array(
-			array('name' => 'ID', 'type' => 'int', 'null' => false, 'auto' => true),
 			array('name' => 'name', 'type' => 'varchar', 'size' => '25', 'default' => '', 'null' => false),
 			array('name' => 'value', 'type' => 'text', 'null' => false),
 		),
 		// index defs
 		array(
-			array('type' => 'primary', 'name' => 'primary', 'columns' => array('ID')),
 		),
 		// options
 		array()
@@ -80,20 +78,20 @@ $tabledate = array(
 	'pmxblog_manager' => array(
 		// column defs
 		array(
-			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'owner', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 			array('name' => 'blogname', 'type' => 'tinytext', 'null' => false),
 			array('name' => 'blogdesc', 'type' => 'tinytext', 'null' => false),
-			array('name' => 'showarchive', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'showcategories', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'showcalendar', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'blogcreated', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'hidebaronedit', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'blogenabled', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'bloglocked', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'showarchive', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'showcategories', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'showcalendar', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'blogcreated', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'hidebaronedit', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'blogenabled', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'bloglocked', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
 			array('name' => 'tracking', 'type' => 'tinytext', 'null' => false),
 			array('name' => 'blograting', 'type' => 'decimal(3,1)', 'default' => '0', 'null' => false),
-			array('name' => 'blogvotes', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'settings', 'type' => 'varchar', 'size' => '10', 'default' => '', 'null' => false),
+			array('name' => 'blogvotes', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'settings', 'type' => 'varchar', 'size' => '10','unsigned' => true, 'default' => '', 'null' => false),
 			array('name' => 'userpicture', 'type' => 'tinytext', 'null' => false),
 		),
 		// index defs
@@ -107,8 +105,8 @@ $tabledate = array(
 	'pmxblog_ratings' => array(
 		// column defs
 		array(
-			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'contID', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'owner', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'contID', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 			array('name' => 'rating', 'type' => 'text', 'null' => false),
 			array('name' => 'voter', 'type' => 'text', 'null' => false),
 		),
@@ -124,11 +122,11 @@ $tabledate = array(
 	'pmxblog_categories' => array(
 		// column defs
 		array(
-			array('name' => 'ID', 'type' => 'int', 'null' => false, 'auto' => true),
-			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'ID', 'type' => 'int', 'size' => '10','unsigned' => true, 'null' => false, 'auto' => true),
+			array('name' => 'owner', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 			array('name' => 'name', 'type' => 'tinytext', 'null' => false),
-			array('name' => 'corder', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'depth', 'type' => 'smallint', 'default' => '0', 'null' => false),
+			array('name' => 'corder', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'depth', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
 		),
 		// index defs
 		array(
@@ -143,18 +141,18 @@ $tabledate = array(
 	'pmxblog_content' => array(
 		// column defs
 		array(
-			array('name' => 'ID', 'type' => 'int', 'null' => false, 'auto' => true),
-			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'ID', 'type' => 'int', 'size' => '10','unsigned' => true, 'null' => false, 'auto' => true),
+			array('name' => 'owner', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 			array('name' => 'ip_address', 'type' => 'varchar', 'size' => '16', 'default' => '', 'null' => false),
-			array('name' => 'categorie', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'nbr_comment', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'allowcomment', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'allow_view', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'date_created', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'date_lastedit', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'published', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'notify', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'views', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'categorie', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'nbr_comment', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'allowcomment', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'allow_view', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'date_created', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'date_lastedit', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'published', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'notify', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'views', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 			array('name' => 'subject', 'type' => 'tinytext', 'null' => false),
 			array('name' => 'body', 'type' => 'text', 'null' => false),
 		),
@@ -172,16 +170,16 @@ $tabledate = array(
 	'pmxblog_comments' => array(
 		// column defs
 		array(
-			array('name' => 'ID', 'type' => 'int', 'null' => false, 'auto' => true),
-			array('name' => 'author', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'ID', 'type' => 'int', 'size' => '10','unsigned' => true, 'null' => false, 'auto' => true),
+			array('name' => 'author', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 			array('name' => 'username', 'type' => 'varchar', 'size' => '25', 'default' => '', 'null' => false),
 			array('name' => 'ip_address', 'type' => 'varchar', 'size' => '16', 'default' => '', 'null' => false),
-			array('name' => 'contID', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'parent', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'treelevel', 'type' => 'smallint', 'default' => '0', 'null' => false),
-			array('name' => 'treeS2', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'date_created', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'date_lastedit', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'contID', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'parent', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'treelevel', 'type' => 'smallint', 'size' => '4', 'default' => '0', 'null' => false),
+			array('name' => 'treeS2', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'date_created', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'date_lastedit', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 			array('name' => 'subject', 'type' => 'tinytext', 'null' => false),
 			array('name' => 'body', 'type' => 'text', 'null' => false),
 		),
@@ -200,9 +198,9 @@ $tabledate = array(
 	'pmxblog_cmnt_log' => array(
 		// column defs
 		array(
-			array('name' => 'userID', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'contID', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'cmtID', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'userID', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'contID', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'cmtID', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 		),
 		// index defs
 		array(
@@ -216,8 +214,8 @@ $tabledate = array(
 	'pmxblog_cont_log' => array(
 		// column defs
 		array(
-			array('name' => 'owner', 'type' => 'int', 'default' => '0', 'null' => false),
-			array('name' => 'userID', 'type' => 'int', 'default' => '0', 'null' => false),
+			array('name' => 'owner', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
+			array('name' => 'userID', 'type' => 'int', 'size' => '10','unsigned' => true, 'default' => '0', 'null' => false),
 			array('name' => 'is_read', 'type' => 'tinytext', 'null' => false),
 		),
 		// index defs
@@ -232,7 +230,6 @@ $tabledate = array(
 
 $tableInserts = array(
 	'pmxblog_settings' => array(
-		'ID' => 'int',
 		'name' => 'string',
 		'value' => 'string',
 	),
@@ -395,7 +392,6 @@ foreach($tabledate as $tblname => $tbldef)
 		{
 			foreach($TblUpdate as $id => $value)
 			{
-        $x=1;
 				$smcFunc['db_insert']('replace', '
 					{db_prefix}'. $tblname,
 						$value['coldef'],
@@ -553,9 +549,10 @@ function getTableData($tblname, $tableDefs)
 
 	// read the table
 	$result = null;
+	$colums = implode(',', array_keys($tableDefs));
 
 	$request = $smcFunc['db_query']('', '
-		SELECT *
+		SELECT '. $colums .'
 		FROM {db_prefix}'.$tblname,
 		array()
 	);
