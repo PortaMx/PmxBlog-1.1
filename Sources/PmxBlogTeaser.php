@@ -133,7 +133,6 @@ function PmxBlogTeaser($content)
 					elseif(empty($is_local))
 					{
 						$extImg = ParseImageUrl($url[0]);
-
 						$im = @imagecreatefromstring($extImg);
 						if($im !== false)
 						{
@@ -189,8 +188,6 @@ function MakeThumbnail($sPath, $dPath, $fName, $max_width, $max_height)
 		$destName = $dPath . substr($newfName, 0, strrpos($newfName, '.')) .'_thumb_'. dechex(crc32($fName . $context['PmxBlog']['UID'])) .'.png';
 
 		$sizes = (file_exists($sPath . $fName) ? getimagesize($sPath . $fName) : 0);
-//		@ini_set('memory_limit', '48M');
-//		$sizes = @getimagesize($sPath . $fName);
 		if(!empty($sizes))
 		{
 			@ini_set('memory_limit', '48M');
