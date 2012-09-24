@@ -54,9 +54,9 @@ function template_main()
 			(isOwner() ? '
 			<input name="contenteditor" type="hidden" value="1" />
 			<input name="commenteditor" type="hidden" value="1" />' : '') .'
-			<div class="windowbg2 pmxblog_core pmx_roundcore">
-			<span class="topslice"><span></span></span>
-			<table class="windowbg2" cellspacing="0" width="100%" style="table-layout:fixed;">
+			<div>
+			<span class="upperframe"><span></span></span>
+			<table class="roundframe" cellspacing="0" width="100%" style="table-layout:fixed;">
 				<tr>
 					<td align="right" width="45%" style="padding-bottom: 5px;">'. $txt['PmxBlog_blogname'] .'</td>
 					<td width="55%" style="padding-bottom: 5px;">
@@ -160,7 +160,7 @@ function template_main()
 					</td>
 				</tr>
 			</table>
-			<span class="botslice"><span></span></span>
+			<span class="lowerframe"><span></span></span>
 			</div>
 			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</form>';
@@ -222,9 +222,9 @@ function template_main()
 				</h3>
 			</div>
 
-			<div class="windowbg2 pmxblog_core pmx_roundcore">
-			<span class="topslice"><span></span></span>
-			<table class="windowbg2" cellspacing="0" width="100%" style="table-layout:fixed;">
+			<div>
+			<span class="upperframe"><span></span></span>
+			<table class="roundframe" cellspacing="0" width="100%" style="table-layout:fixed;">
 			<tbody id="categorie_edit">';
 			if(isOwner() && !isBlogLocked())
 				echo '
@@ -329,7 +329,7 @@ function template_main()
 					<input style="margin:8px 0px;" type="button" class="button_submit" value="' . $txt['PmxBlog_send'] .'" onclick="submitEditCats()" />
 				</div>
 			</div>
-			<span class="botslice"><span></span></span>
+			<span class="lowerframe"><span></span></span>
 			</div>
 			<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			'.
@@ -350,13 +350,13 @@ function template_main()
 				'. $txt['PmxBlog_remove_title'] .'
 			</h3></div>
 			<form id="pmx_form" name="PmxBlogManager_BlogDelete" action="' . $scripturl . '?action=pmxblog;sa=manager;setup=remove'.$context['PmxBlog']['UserLink'].'" method="post" style="margin: 0px;">
-				<div class="windowbg2 pmxblog_core pmx_roundcore">
-				<span class="topslice"><span></span></span>
-					<div style="padding:5px 5px;text-align:center;">
+				<div>
+				<span class="upperframe"><span></span></span>
+					<div class="roundframe" style="padding:5px 5px;text-align:center;">
 					'. $txt['PmxBlog_blog_remove'] .'<br /><br />
 						<input style="font-weight:bold;" type="submit" class="button_submit" value="' . $txt['PmxBlog_remblog'] .'" name="remblog" onclick="return confirm(\''.$txt['PmxBlog_confirmblogdel'].'\')" />
 					</div>
-				<span class="botslice"><span></span></span>
+				<span class="lowerframe"><span></span></span>
 				</div>
 				<div class="smalltext pmx_botline">'.$context['PmxBlog']['copyright'].'</div>
 			</form>';

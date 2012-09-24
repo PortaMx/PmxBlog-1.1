@@ -101,6 +101,15 @@
 	float: right;
 }
 /* Blog buttons */
+.pmx_adm_menus
+{
+	margin-bottom: 6px !important;
+}
+.pmx_adm_submenus
+{
+	margin-bottom: 6px !important;
+	margin-top: 5px !important;
+}
 .pmx_botline
 {
 	text-align: center;

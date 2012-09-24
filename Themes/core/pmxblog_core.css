@@ -1,0 +1,160 @@
+/*
+ PmxBlog_core.css - compatibility for the old core theme
+ Version: 1.0 for SMF 2.0
+ Copyright 2009-2011 by: PortaMx corp.
+ Support and Updates at: http://portamx.com
+*/
+
+/* Grid tables */
+table.table_grid thead th.smalltext
+{
+	white-space: nowrap;
+}
+table.table_grid
+{
+	border-collapse: collapse;
+}
+table.table_grid td
+{
+	padding: 0px;
+	border-width:0;
+}
+.table_grid thead th
+{
+	color: white;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	background: url(images/catbg.jpg) repeat-x;
+}
+.table_grid thead th a:link, .table_grid thead th a:visited
+{
+	color: white;
+}
+.table_grid th.first_th
+{
+	background: url(images/catbg.jpg) repeat-x;
+}
+.table_grid th.last_th
+{
+	background: url(images/catbg.jpg) repeat-x;
+}
+h3.titlebg
+{
+	height: 30px !important;
+	line-height: 29px !important;
+}
+.pmxblog_corecmnt
+{
+	height: 18px;
+	line-height: 18px !important;
+	font-weight: normal !important;
+}
+/* paddings */
+.pmxblog_sortpad
+{
+	padding:5px 4px !important;
+}
+.pmxblog_headpad
+{
+	height:6px !important;
+}
+.pmxblog_corepad
+{
+	margin-bottom: 6px;
+}
+/* frame styles */
+.plainbox
+{
+	padding: 0.5em 1em 1em 1em;
+	font-size: 0.9em;
+	line-height: 1.4em;
+	border: solid 1px #bbb;
+	background: #f5f5f0;
+	margin: 0 0 1em 0;
+}
+.pmx_roundcore
+{
+	padding: 10px !important;
+}
+.pmxblog_core
+{
+	border: solid 1px #bbb;
+	padding: 1px;
+}
+/* The PmxBlog menus */
+.pmx_adm_menus
+{
+	margin-bottom: 0 !important;
+}
+.pmx_adm_submenus
+{
+	margin-bottom: 0 !important;
+	margin-top: 0 !important;
+	height: 2.2em !important;
+	overflow: hidden !important;
+}
+.dropmenu, .dropmenu ul
+{
+	list-style: none;
+	line-height: 1em;
+	padding: 0;
+	margin: 0;
+}
+.dropmenu
+{
+	padding: 0 0.5em;
+}
+.dropmenu a
+{
+	display: block;
+	color: #000000;
+	text-decoration: none;
+}
+.dropmenu a span
+{
+	display: block;
+	padding: 0 0 0 5px;
+	font-size: 9pt;
+}
+/* backgrounds level */
+.dropmenu li a.firstlevel
+{
+	margin-right: 8px;
+	background: url(pmxblog_menu.png) no-repeat 100% 0;
+	color: #ffffff;
+}
+.dropmenu li a.firstlevel span.firstlevel
+{
+	display: block;
+	position: relative;
+	left: -5px;
+	padding-left: 5px;
+	height: 22px;
+	line-height: 20px;
+	background: url(pmxblog_menu.png) no-repeat 0 0;
+}
+.dropmenu li
+{
+	float: left;
+	padding: 0;
+	margin: 0;
+	position: relative;
+}
+/* active button */
+.dropmenu li a.active
+{
+	background: url(pmxblog_menu.png) no-repeat 100% -30px;
+	color: #ffffff;
+}
+.dropmenu li a.active span.firstlevel
+{
+	background: url(pmxblog_menu.png) no-repeat 0 -30px;
+}
+/* hover effects */
+.dropmenu li a.firstlevel:hover, .dropmenu li a.active:hover
+{
+	color: #e0e0e0;
+	cursor: pointer;
+	text-decoration: none;
+}

@@ -20,9 +20,9 @@ function template_main()
 	{
 		echo '
 		<form id="pmx_form" accept-charset="'.$context['character_set'].'" name="PmxBlog_Setting" action="' . $scripturl . '?action=pmxblog;sa=admin;setup=upd" method="post" style="margin: 0px;">
-		<div class="windowbg2 pmxblog_core" style="margin-top:4px;">
-		<span class="topslice"><span></span></span>
-			<table width="100%" border="0" class="windowbg2" style="padding:3px 5px;">
+		<div>
+			<span class="upperframe"><span></span></span>
+			<table width="100%" border="0" class="roundframe" style="padding:3px 5px;">
 				<tr style="margin-top:10px;"><td valign="top" align="right" style="width:45%; padding-top:10px;">
 					'. $txt['PmxBlog_usewysiwyg'] .'
 				</td><td valign="top" style="padding-top:10px;">
@@ -157,17 +157,17 @@ function template_main()
 					<input class="button_submit" type="submit" value="' . $txt['PmxBlog_send'] .'" name="send" />
 				</td></tr>
 			</table>
-			<span class="botslice"><span></span></span>
-			</div>
+			<span class="lowerframe"><span></span></span>
+		</div>
 		</form>';
 	}
 	elseif($curact = 'acs')
 	{
 		echo '
 		<form id="pmx_form" accept-charset="'.$context['character_set'].'" name="PmxBlog_Setting" action="' . $scripturl . '?action=pmxblog;sa=admin;acs=upd" method="post" style="margin: 0px;">
-		<div class="windowbg2 pmxblog_core" style="margin-top:4px;">
-		<span class="topslice"><span></span></span>
-			<table width="100%" border="0" class="windowbg2" style="padding:3px 5px;">
+		<div>
+		<span class="upperframe"><span></span></span>
+			<table width="100%" border="0" class="roundframe" style="padding:3px 5px;">
 				<tr><td style="width:33%;">
 					'.$txt['PmxBlog_blog_manage'].'
 				</td><td style="width:33%;">
@@ -248,8 +248,8 @@ function template_main()
 					<input class="button_submit" type="submit" value="' . $txt['PmxBlog_send'] .'" name="send" />
 				</td></tr>
 			</table>
-			<span class="botslice"><span></span></span>
-			</div>
+			<span class="lowerframe"><span></span></span>
+		</div>
 		</form>';
 	}
 }

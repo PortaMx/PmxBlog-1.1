@@ -992,7 +992,6 @@ function PmxBlogManager($mode, $pagelist)
 						$smcFunc['db_free_result']($request);
 					}
 					$contID = $id;
-					$ptrS2 = '';
 				}
 
 				elseif($_GET['store'] == 'rply')
@@ -1019,7 +1018,6 @@ function PmxBlogManager($mode, $pagelist)
 					{
 						// shift comments up
 						$tl = array($id);
-						$ptrS2 = strval($treeS2 -1);
 
 						$request = $smcFunc['db_query']('', '
 							SELECT ID, parent, treeS2
@@ -1057,7 +1055,7 @@ function PmxBlogManager($mode, $pagelist)
 
 				if(!empty($body))
 				{
-					$subject = 'Re: '. $subject .(!empty($ptrS2) ? ' ['. $ptrS2 .']' : '');
+					$subject = 'Re: '. $subject;
 					$td = forum_time();
 					$poster = $user_info['id'];
 					$ip = $user_info['ip'];

@@ -15,7 +15,7 @@ function Navigation($tabarray)
 
 	echo '
 	<a name="top"></a>
-	<div style="height:25px;">
+	<div id="admin_menu" class="pmx_adm_menus">
 		<ul class="dropmenu">';
 
 	foreach($tabarray['tabs'] as $key => $tab)
@@ -41,9 +41,9 @@ function AdminTabs($tabarray)
 	$subact = '';
 	echo '
 	<div class="title_bar"><h3 class="titlebg pmxblog_corepad" style="text-align:center;">
-			'.$tabarray['title'].'
+		'.$tabarray['title'].'
 	</h3></div>
-	<div style="height:25px; margin-top:4px;">
+	<div  id="adm_submenus" class="pmx_adm_submenus">
 		<ul class="dropmenu">';
 
 	foreach($tabarray['tabs'] as $key => $tab)
