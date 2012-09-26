@@ -296,6 +296,9 @@ function PmxBlog_teasegetchars($text, $wordcount)
 		}
 		$text = PmxBlog_tease_settags($smcFunc['substr']($text, 0, $wordcount), $tags);
 	}
+	else
+		$text = $smcFunc['substr']($text, 0, $wordcount);
+
 	$context['PmxBlog']['is_teased'] = PmxBlog_teasecountchars($text);
 
 	return $text;
