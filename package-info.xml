@@ -13,6 +13,7 @@
 		<modification format="xml" type="file">install/pmxblog_inst.xml</modification>
 		<require-dir name="Themes" destination="$boarddir" />
 		<require-dir name="Sources" destination="$boarddir" />
+		<require-dir name="Smileys/PortaMx" destination="$smileysdir" />
 		<require-dir name="editor_thumbnails" destination="$boarddir" />
 		<require-dir name="fckeditor" destination="$boarddir" />
 		<require-dir name="editor_uploads" destination="$boarddir" />
