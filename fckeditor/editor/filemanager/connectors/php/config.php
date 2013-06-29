@@ -35,9 +35,6 @@ $fckdir = 'fckeditor';
 $relpath = substr($_SERVER['PHP_SELF'], 0, strpos($_SERVER['PHP_SELF'], $fckdir)) . $userdir;
 $abspath = substr($_SERVER['SCRIPT_FILENAME'], 0, strpos($_SERVER['SCRIPT_FILENAME'], $fckdir)) . $userdir;
 
-$custom_dir = '';
-if(!empty($_COOKIE['PmxBlogImgcfg']))
-	$custom_dir = $_COOKIE['PmxBlogImgcfg'] .'/';
 // Path to user files relative to the document root.
 $Config['UserFilesPath'] = $relpath;
 
@@ -128,24 +125,24 @@ $Config['ChmodOnFolderCreate'] = 0775 ;
 
 */
 
-$Config['AllowedExtensions']['File']				= array('7z', 'aiff', 'asf', 'avi', 'bmp', 'csv', 'doc', 'fla', 'flv', 'gif', 'gz', 'gzip', 'jpeg', 'jpg', 'mid', 'mov', 'mp3', 'mp4', 'mpc', 'mpeg', 'mpg', 'ods', 'odt', 'pdf', 'png', 'ppt', 'pxd', 'qt', 'ram', 'rar', 'rm', 'rmi', 'rmvb', 'rtf', 'sdc', 'sitd', 'swf', 'sxc', 'sxw', 'tar', 'tgz', 'tif', 'tiff', 'txt', 'vsd', 'wav', 'wma', 'wmv', 'xls', 'xml', 'zip') ;
-$Config['DeniedExtensions']['File']					= array() ;
-$Config['FileTypesPath']['File']						= $Config['UserFilesPath'] . 'file/' . $custom_dir ;
-$Config['FileTypesAbsolutePath']['File']		= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'file/' . $custom_dir ;
-$Config['QuickUploadPath']['File']					= $Config['UserFilesPath']. 'file/' . $custom_dir ;
-$Config['QuickUploadAbsolutePath']['File']	= $Config['UserFilesAbsolutePath']. 'file/' . $custom_dir ;
+$Config['AllowedExtensions']['File']	= array('7z', 'aiff', 'asf', 'avi', 'bmp', 'csv', 'doc', 'fla', 'flv', 'gif', 'gz', 'gzip', 'jpeg', 'jpg', 'mid', 'mov', 'mp3', 'mp4', 'mpc', 'mpeg', 'mpg', 'ods', 'odt', 'pdf', 'png', 'ppt', 'pxd', 'qt', 'ram', 'rar', 'rm', 'rmi', 'rmvb', 'rtf', 'sdc', 'sitd', 'swf', 'sxc', 'sxw', 'tar', 'tgz', 'tif', 'tiff', 'txt', 'vsd', 'wav', 'wma', 'wmv', 'xls', 'xml', 'zip') ;
+$Config['DeniedExtensions']['File']		= array() ;
+$Config['FileTypesPath']['File']		= $Config['UserFilesPath'] . 'file/' ;
+$Config['FileTypesAbsolutePath']['File']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'file/' ;
+$Config['QuickUploadPath']['File']		= $Config['UserFilesPath']. 'file/' ;
+$Config['QuickUploadAbsolutePath']['File']= $Config['UserFilesAbsolutePath']. 'file/' ;
 
-$Config['AllowedExtensions']['Image']				= array('bmp','gif','jpeg','jpg','png') ;
-$Config['DeniedExtensions']['Image']				= array() ;
-$Config['FileTypesPath']['Image']						= $Config['UserFilesPath'] . 'images/' . $custom_dir ;
-$Config['FileTypesAbsolutePath']['Image']		= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'images/' . $custom_dir ;
-$Config['QuickUploadPath']['Image']					= $Config['UserFilesPath']. 'images/' . $custom_dir ;
-$Config['QuickUploadAbsolutePath']['Image']	= $Config['UserFilesAbsolutePath']. 'images/' . $custom_dir ;
+$Config['AllowedExtensions']['Image']	= array('bmp','gif','jpeg','jpg','png') ;
+$Config['DeniedExtensions']['Image']	= array() ;
+$Config['FileTypesPath']['Image']		= $Config['UserFilesPath'] . 'images/' ;
+$Config['FileTypesAbsolutePath']['Image']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'images/' ;
+$Config['QuickUploadPath']['Image']		= $Config['UserFilesPath']. 'images/' ;
+$Config['QuickUploadAbsolutePath']['Image']= $Config['UserFilesAbsolutePath']. 'images/' ;
 
-$Config['AllowedExtensions']['Media']				= array('aiff', 'asf', 'avi', 'bmp', 'fla', 'flv', 'gif', 'jpeg', 'jpg', 'mid', 'mov', 'mp3', 'mp4', 'mpc', 'mpeg', 'mpg', 'png', 'qt', 'ram', 'rm', 'rmi', 'rmvb', 'swf', 'tif', 'tiff', 'wav', 'wma', 'wmv') ;
-$Config['DeniedExtensions']['Media']				= array() ;
-$Config['FileTypesPath']['Media']						= $Config['UserFilesPath'] . 'media/' . $custom_dir ;
-$Config['FileTypesAbsolutePath']['Media']		= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'media/' . $custom_dir ;
-$Config['QuickUploadPath']['Media']					= $Config['UserFilesPath']. 'media/' . $custom_dir ;
-$Config['QuickUploadAbsolutePath']['Media']	= $Config['UserFilesAbsolutePath']. 'media/' . $custom_dir ;
+$Config['AllowedExtensions']['Media']	= array('aiff', 'asf', 'avi', 'bmp', 'fla', 'flv', 'gif', 'jpeg', 'jpg', 'mid', 'mov', 'mp3', 'mp4', 'mpc', 'mpeg', 'mpg', 'png', 'qt', 'ram', 'rm', 'rmi', 'rmvb', 'swf', 'tif', 'tiff', 'wav', 'wma', 'wmv') ;
+$Config['DeniedExtensions']['Media']	= array() ;
+$Config['FileTypesPath']['Media']		= $Config['UserFilesPath'] . 'media/' ;
+$Config['FileTypesAbsolutePath']['Media']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'media/' ;
+$Config['QuickUploadPath']['Media']		= $Config['UserFilesPath']. 'media/' ;
+$Config['QuickUploadAbsolutePath']['Media']= $Config['UserFilesAbsolutePath']. 'media/' ;
 ?>

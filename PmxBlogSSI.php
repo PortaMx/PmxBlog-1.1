@@ -514,7 +514,9 @@ function PmxBlogSSI_ShowArticles()
 **/
 function PmxBlogArticles_SSI_Out($article, $titlelist = array(), $currentid = 0)
 {
-	global $context, $scripturl, $txt;
+	global $context, $scripturl, $sourcedir, $txt;
+
+	include_once($sourcedir .'/PmxBlogTeaser.php');
 
 	// output the aricle
 	echo '
@@ -540,7 +542,7 @@ function PmxBlogArticles_SSI_Out($article, $titlelist = array(), $currentid = 0)
 				<div style="margin:0; padding:0 0 4px 0; overflow:auto;">';
 
 	echo '
-					<div>'. $article['body'] .'</div>
+					<div>'. PmxBlogTeaser($article['body']) .'</div>
 				</div>
 			</td>';
 
