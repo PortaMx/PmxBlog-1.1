@@ -125,7 +125,7 @@ function template_main()
 				</tr><tr>
 					<td align="right" width="45%" style="padding-top:10px;"><b>'. $txt['PmxBlog_blogenabled'] .'</b></td>
 					<td width="55%" style="padding-top:10px;">
-						<input class="check" name="blogenabled" type="checkbox" value="1"', isBlogEnabled() ? ' checked="checked"': '', ' />
+						<input class="check" name="blogenabled" type="checkbox" value="1"', isBlogEnabled() || empty($context['PmxBlog']['blogexist']) ? ' checked="checked"': '', ' />
 						'. $txt['PmxBlog_checkbox_help'] .'
 						<input name="blogcreated" type="hidden" value="'.$context['PmxBlog']['Manager']['blogcreated'].'" />
 						'. (isOwner() ? '<input name="bloglocked" type="hidden" value="'. (isBlogLocked() ? '1' : '0') .'" />' : '') .'
